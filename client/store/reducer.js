@@ -61,7 +61,7 @@ export const logout = () => async dispatch => {
 
 export const getAllProducts = () => {
   return async dispatch => {
-    const result = await axios.get('/api/home')
+    const result = await axios.get('/api/products')
     dispatch(viewProducts(result.data))
   }
 }
@@ -69,7 +69,7 @@ export const getAllProducts = () => {
 /**
  * REDUCER
  */
-const users = (state = defaultUser, action) => {
+const manageUsers = (state = defaultUser, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user
@@ -80,14 +80,14 @@ const users = (state = defaultUser, action) => {
   }
 }
 
-const products = (state = [], action) => {
+const manageProducts = (state = [], action) => {
   switch (action.type) {
     case ALL_PRODUCTS:
-      return action
+      return action.products
     default:
       return state
   }
 }
 
-const reducer = combineReducers({users: users, products: products})
+const reducer = combineReducers({user: manageUsers, products: manageProducts})
 export default reducer
