@@ -16,13 +16,13 @@ export class AllProducts extends React.Component {
 
     return (
       <div>
-        <h1>Products:</h1>{' '}
+        <h1>Products:</h1>
         {products &&
           products.map(product => (
             <div key={product.id}>
               <h3>{product.title}</h3>
               <img src={product.imageUrl} />
-              <h4>{product.price}</h4>
+              <h4>${product.price}</h4>
             </div>
           ))}
       </div>
