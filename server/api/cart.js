@@ -1,6 +1,5 @@
 const router = require('express').Router()
-const {Product} = require('../db/models')
-module.exports = router
+//const {Product} = require('../db/models')
 
 class Cart {
   constructor() {
@@ -66,26 +65,27 @@ class Cart {
   //update cart method goes here when the time comes (for adjusting quantity)
 }
 
-router.post('/cart', async (req, res, next) => {
-  let qty = parseInt(req.body.qty, 10)
-  let productId = parseInt(req.body.product_id, 10)
-  try {
-    const prod = await Product.findOne({id: productId})
-    Cart.addToCart(prod, qty)
-    Cart.saveCart(req)
-    res.redirect('/cart')
-  } catch (err) {
-    next(err)
-  }
-})
-
-// router.get('/cart', async (req, res, next) => {
+// router.post('/', async (req, res, next) => {
+//   let qty = parseInt(req.body.qty, 10)
+//   let productId = parseInt(req.body.product_id, 10)
 //   try {
+//     const prod = await Product.findOne({id: productId})
+//     Cart.addToCart(prod, qty)
+//     Cart.saveCart(req)
+//     res.redirect('/cart')
 //   } catch (err) {
 //     next(err)
 //   }
 // })
 
-module.exports = new Cart()
+router.get('/', async (req, res, next) => {
+  try {
+    res.json(req.session.cart)
+  } catch (err) {
+    next(err)
+  }
+})
+
+module.exports = router
 
 //take out product id stuff
