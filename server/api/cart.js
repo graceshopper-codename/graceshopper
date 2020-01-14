@@ -78,7 +78,7 @@ router.post('/', async (req, res, next) => {
     const prod = await Products.findByPk(productId)
     NewCart.addToCart(prod, qty)
     NewCart.saveCart(req)
-    res.redirect('/cart')
+    res.json(req.session.cart)
   } catch (err) {
     next(err)
   }
