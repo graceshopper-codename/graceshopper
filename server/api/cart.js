@@ -1,5 +1,5 @@
 const router = require('express').Router()
-//const {Product} = require('../db/models')
+const Products = require('../db/models/products')
 
 class Cart {
   constructor() {
@@ -31,6 +31,10 @@ class Cart {
     if (!this.inCart(product.product_id)) {
       let prod = {
         //add any info for each product 'product.price'
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        qty: qty
       }
       this.data.items.push(prod)
       this.calculateTotal()
@@ -65,18 +69,20 @@ class Cart {
   //update cart method goes here when the time comes (for adjusting quantity)
 }
 
-// router.post('/', async (req, res, next) => {
-//   let qty = parseInt(req.body.qty, 10)
-//   let productId = parseInt(req.body.product_id, 10)
-//   try {
-//     const prod = await Product.findOne({id: productId})
-//     Cart.addToCart(prod, qty)
-//     Cart.saveCart(req)
-//     res.redirect('/cart')
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+let NewCart = new Cart()
+
+router.post('/', async (req, res, next) => {
+  let qty = parseInt(req.body.qty, 10)
+  let productId = parseInt(req.body.product_id, 10)
+  try {
+    const prod = await Products.findByPk(productId)
+    NewCart.addToCart(prod, qty)
+    NewCart.saveCart(req)
+    res.redirect('/cart')
+  } catch (err) {
+    next(err)
+  }
+})
 
 router.get('/', async (req, res, next) => {
   try {
