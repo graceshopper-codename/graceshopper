@@ -19,12 +19,14 @@ export default class Cart extends React.Component {
     return (
       <div>
         <h1>Your Cart:</h1>
+
         {this.state ? (
           <ul>{this.state.map(item => <li key={item.id}>{item.title}</li>)}</ul>
         ) : (
           <div>Please add items to cart</div>
         )}
-        <Link to="/cart/CheckoutForm">Checkout</Link>
+        <Link to="/cart/checkoutform">Checkout</Link>
+
       </div>
     )
   }
