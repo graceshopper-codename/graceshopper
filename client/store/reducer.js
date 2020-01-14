@@ -1,11 +1,13 @@
 import axios from 'axios'
 import history from '../history'
+import {combineReducers} from 'redux'
 
 /**
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
+const ALL_PRODUCTS = 'ALL_PRODUCTS'
 
 /**
  * INITIAL STATE
@@ -17,6 +19,7 @@ const defaultUser = {}
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+const viewProducts = products => ({type: ALL_PRODUCTS, products})
 
 /**
  * THUNK CREATORS
@@ -56,10 +59,17 @@ export const logout = () => async dispatch => {
   }
 }
 
+export const getAllProducts = () => {
+  return async dispatch => {
+    const result = await axios.get('/api/products')
+    dispatch(viewProducts(result.data))
+  }
+}
+
 /**
  * REDUCER
  */
-export default function(state = defaultUser, action) {
+const manageUsers = (state = defaultUser, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user
@@ -69,3 +79,15 @@ export default function(state = defaultUser, action) {
       return state
   }
 }
+
+const manageProducts = (state = [], action) => {
+  switch (action.type) {
+    case ALL_PRODUCTS:
+      return action.products
+    default:
+      return state
+  }
+}
+
+const reducer = combineReducers({user: manageUsers, products: manageProducts})
+export default reducer
