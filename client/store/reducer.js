@@ -8,6 +8,7 @@ import {combineReducers} from 'redux'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const ALL_PRODUCTS = 'ALL_PRODUCTS'
+const ADD_TO_CART = 'ADD_TO_CART^'
 
 /**
  * INITIAL STATE
@@ -20,6 +21,7 @@ const defaultUser = {}
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
+const addItem = item => ({type: ADD_TO_CART, item})
 
 /**
  * THUNK CREATORS
@@ -63,6 +65,13 @@ export const getAllProducts = () => {
   return async dispatch => {
     const result = await axios.get('/api/products')
     dispatch(viewProducts(result.data))
+  }
+}
+
+export const addingToCart = item => {
+  return async dispatch => {
+    const result = await axios.post('/api/cart', item)
+    dispatch(addItem(result))
   }
 }
 
