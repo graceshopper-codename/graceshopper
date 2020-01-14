@@ -57,13 +57,13 @@ async function seed() {
 
   const order = await Promise.all([
     Order.create({
-      userId: 37,
+      userId: 1,
       payment: 'Paypal',
       address: '177a Bleecker Street',
       cost: 2899.04
     }),
     Order.create({
-      userId: 9,
+      userId: 2,
       payment: 'Credit Card',
       address: '177b Bleecker Street',
       cost: 246.08
