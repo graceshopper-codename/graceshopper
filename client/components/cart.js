@@ -1,15 +1,32 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-// import { connect } from 'react-redux'
+import Axios from 'axios'
 
-export class Cart extends React.Component {
+export default class Cart extends React.Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
+
+  async componentDidMount() {
+    let {data} = await Axios.get('/api/cart')
+    if (this.data) {
+      this.setState(data)
+    }
+  }
+
   render() {
     return (
       <div>
         <h1>Your Cart:</h1>
-        <h4>**Will show cart items here once set up**</h4>
-        <h5>Subtotal:</h5>
+
+        {this.state ? (
+          <ul>{this.state.map(item => <li key={item.id}>{item.title}</li>)}</ul>
+        ) : (
+          <div>Please add items to cart</div>
+        )}
         <Link to="/cart/checkoutform">Checkout</Link>
+
       </div>
     )
   }
