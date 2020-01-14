@@ -70,8 +70,10 @@ export const getAllProducts = () => {
 
 export const addingToCart = item => {
   return async dispatch => {
+    console.log(item)
     const result = await axios.post('/api/cart', item)
-    dispatch(addItem(result))
+    console.log(result)
+    dispatch(addItem(result.data))
   }
 }
 
