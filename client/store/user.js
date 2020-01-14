@@ -89,5 +89,5 @@ const products = (state = [], action) => {
   }
 }
 
-const reducer = combineReducers({users: users, products: products})
+const reducer = combineReducers({user: users, products: products})
 export default reducer
