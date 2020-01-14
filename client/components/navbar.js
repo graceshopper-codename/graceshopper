@@ -6,8 +6,17 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>CODENAMES</h1>
-    <Link to="/cart">Cart</Link>
+    <div>
+      <h1>CODENAMES</h1>
+      <div id="cart">
+        <Link to="/cart">
+          <img
+            src="https://assets1.risnews.com/styles/content_sm/s3/2018-04/shopping-cart.png?itok=LUk_XbaE"
+            height="80px"
+          />
+        </Link>
+      </div>
+    </div>
     <nav>
       {isLoggedIn ? (
         <div>
