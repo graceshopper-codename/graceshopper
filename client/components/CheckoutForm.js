@@ -1,6 +1,14 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {purchase} from '../store/reducer'
 
-export class CheckoutForm extends Component {
+let defaultState = {
+  name: '',
+  address: '',
+  payment: ''
+}
+
+class CheckoutForm extends Component {
   constructor() {
     super()
     this.state = {
@@ -21,7 +29,7 @@ export class CheckoutForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.handleSubmit(this.state)
+    this.props.purchase(this.state)
     this.setState(defaultState)
   }
 
@@ -56,3 +64,11 @@ export class CheckoutForm extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    purchase: order => dispatch(purchase(order))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(CheckoutForm)

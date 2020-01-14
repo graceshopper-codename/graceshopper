@@ -1,6 +1,7 @@
 import axios from 'axios'
 import history from '../history'
 import {combineReducers} from 'redux'
+import Axios from 'axios'
 
 /**
  * ACTION TYPES
@@ -8,6 +9,7 @@ import {combineReducers} from 'redux'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const ALL_PRODUCTS = 'ALL_PRODUCTS'
+const CREATE_ORDER = 'CREATE_ORDER'
 
 /**
  * INITIAL STATE
@@ -20,6 +22,7 @@ const defaultUser = {}
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
+const createOrder = order => ({type: CREATE_ORDER, order})
 
 /**
  * THUNK CREATORS
@@ -66,6 +69,13 @@ export const getAllProducts = () => {
   }
 }
 
+export const purchase = order => {
+  return async dispatch => {
+    const data = await Axios.post('/api/cart', order)
+    dispatch(createOrder(data))
+  }
+}
+
 /**
  * REDUCER
  */
@@ -89,5 +99,18 @@ const manageProducts = (state = [], action) => {
   }
 }
 
-const reducer = combineReducers({user: manageUsers, products: manageProducts})
+const manageOrder = (state = [], action) => {
+  switch (action.type) {
+    case CREATE_ORDER:
+      return action.order
+    default:
+      return state
+  }
+}
+
+const reducer = combineReducers({
+  user: manageUsers,
+  products: manageProducts,
+  order: manageOrder
+})
 export default reducer
