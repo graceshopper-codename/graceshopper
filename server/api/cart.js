@@ -87,7 +87,7 @@ router.post('/', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     console.log('req session at line 89', req.session.cart)
-    res.sendStatus(200)
+    res.json(req.session.cart)
   } catch (err) {
     next(err)
   }
