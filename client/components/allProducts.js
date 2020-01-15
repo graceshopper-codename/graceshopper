@@ -1,5 +1,5 @@
 import React from 'react'
-import {getAllProducts, addingToCart} from '../store/reducer'
+import {getAllProducts, addingToCart} from '../store/products'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
@@ -12,8 +12,6 @@ export class AllProducts extends React.Component {
 
   async addToCart(item) {
     const result = await axios.post('/api/cart', item)
-    console.log('item', item)
-    console.log('result.data', result.data)
     return result.data
   }
 
@@ -22,7 +20,7 @@ export class AllProducts extends React.Component {
   }
 
   render() {
-    let products = this.props.products
+    let products = this.props.products.products
 
     return (
       <div>
@@ -31,7 +29,8 @@ export class AllProducts extends React.Component {
           products.map(product => (
             <div key={product.id}>
               <Link to={`products/${product.id}`}>
-              <h3>{product.title}</h3> </Link>
+                <h3>{product.title}</h3>{' '}
+              </Link>
               <img src={product.imageUrl} />
               <h4>${product.price}</h4>
               <button
@@ -45,7 +44,6 @@ export class AllProducts extends React.Component {
               >
                 Add To Cart
               </button>
-
             </div>
           ))}
       </div>

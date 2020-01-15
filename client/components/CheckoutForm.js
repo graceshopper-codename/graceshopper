@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {purchase} from '../store/reducer'
+import {purchase} from '../store/user'
 
 let defaultState = {
   name: '',
