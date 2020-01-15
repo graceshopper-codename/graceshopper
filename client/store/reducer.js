@@ -9,7 +9,6 @@ import Axios from 'axios'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const ALL_PRODUCTS = 'ALL_PRODUCTS'
-const ADD_TO_CART = 'ADD_TO_CART'
 const SINGLE_PRODUCT = 'SINGLE_PRODUCT'
 const CREATE_ORDER = 'CREATE_ORDER'
 
@@ -26,7 +25,6 @@ const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
 const createOrder = order => ({type: CREATE_ORDER, order})
-const addItem = item => ({type: ADD_TO_CART, item})
 const singleProduct = product => ({type: SINGLE_PRODUCT, product})
 
 /**
@@ -79,12 +77,6 @@ export const purchase = order => {
   return async dispatch => {
     const data = await Axios.post('/api/cart', order)
     dispatch(createOrder(data))
-
-export const addingToCart = item => {
-  return async dispatch => {
-    const result = await axios.post('/api/cart', item)
-    dispatch(addItem(result.data))
-
   }
 }
 
