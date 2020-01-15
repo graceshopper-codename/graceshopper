@@ -1,5 +1,5 @@
 import React from 'react'
-import {me} from '../store/reducer'
+import {me} from '../store/user'
 import {connect} from 'react-redux'
 
 export class User extends React.Component {

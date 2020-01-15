@@ -14,15 +14,23 @@ const singleProduct = product => ({type: SINGLE_PRODUCT, product})
 
 export const getAllProducts = () => {
   return async dispatch => {
-    const result = await axios.get('/api/products')
-    dispatch(viewProducts(result.data))
+    try {
+      const result = await axios.get('/api/products')
+      dispatch(viewProducts(result.data))
+    } catch (err) {
+      console.error(err)
+    }
   }
 }
 
 export const getSingleProduct = product => {
   return async dispatch => {
-    const result = await axios.get(`/api/products/${product}`)
-    dispatch(singleProduct(result.data))
+    try {
+      const result = await axios.get(`/api/products/${product}`)
+      dispatch(singleProduct(result.data))
+    } catch (err) {
+      console.error(err)
+    }
   }
 }
 
