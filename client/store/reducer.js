@@ -9,8 +9,9 @@ import Axios from 'axios'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const ALL_PRODUCTS = 'ALL_PRODUCTS'
+const ADD_TO_CART = 'ADD_TO_CART'
+const SINGLE_PRODUCT = 'SINGLE_PRODUCT'
 const CREATE_ORDER = 'CREATE_ORDER'
-const ADD_TO_CART = 'ADD_TO_CART^'
 
 
 /**
@@ -26,6 +27,7 @@ const removeUser = () => ({type: REMOVE_USER})
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
 const createOrder = order => ({type: CREATE_ORDER, order})
 const addItem = item => ({type: ADD_TO_CART, item})
+const singleProduct = product => ({type: SINGLE_PRODUCT, product})
 
 /**
  * THUNK CREATORS
@@ -80,11 +82,16 @@ export const purchase = order => {
 
 export const addingToCart = item => {
   return async dispatch => {
-    console.log(item)
     const result = await axios.post('/api/cart', item)
-    console.log(result)
     dispatch(addItem(result.data))
 
+  }
+}
+
+export const getSingleProduct = product => {
+  return async dispatch => {
+    const result = await axios.get(`/api/products/${product}`)
+    dispatch(singleProduct(result.data))
   }
 }
 
@@ -106,6 +113,8 @@ const manageProducts = (state = [], action) => {
   switch (action.type) {
     case ALL_PRODUCTS:
       return action.products
+    case SINGLE_PRODUCT:
+      return action
     default:
       return state
   }

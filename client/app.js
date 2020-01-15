@@ -4,6 +4,7 @@ import {Navbar} from './components'
 import Routes from './routes'
 import AllProducts from './components/AllProducts'
 import {Cart} from './components/cart'
+import SingleProduct from './components/singleProduct'
 import CheckoutForm from './components/CheckoutForm'
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" component={Routes} />
         <Route exact path="/" component={AllProducts} />
         <Route exact path="/cart" component={Cart} />
+        <Route path="/products/:id" component={SingleProduct} />
         <Route path="/cart/checkoutform" component={CheckoutForm} />
       </div>
     </BrowserRouter>
