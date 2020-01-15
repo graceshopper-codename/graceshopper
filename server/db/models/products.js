@@ -23,7 +23,7 @@ const Products = db.define('products', {
     allowNull: false
   },
   price: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   imageUrl: {
