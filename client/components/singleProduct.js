@@ -1,5 +1,5 @@
 import React from 'react'
-import {getSingleProduct} from '../store/reducer'
+import {getSingleProduct} from '../store/products'
 import {connect} from 'react-redux'
 
 export class SingleProduct extends React.Component {
@@ -9,7 +9,6 @@ export class SingleProduct extends React.Component {
   }
   render() {
     const product = this.props.products.product
-    console.log(product)
     return (
       <div>
         {product && (
