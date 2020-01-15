@@ -1,24 +1,27 @@
-const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Order = db.define('order', {
-  userId: {
-    type: Sequelize.INTEGER,
+  sessionId: {
+    type: Sequelize.STRING,
     unique: true,
     allowNull: false
   },
   payment: {
     type: Sequelize.ENUM('Credit Card', 'Paypal', 'Other'),
-    allowNull: false
+    allowNull: true
   },
   address: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   cost: {
-    type: Sequelize.DECIMAL(10, 2),
+    type: Sequelize.INTEGER,
     allowNull: false
+  },
+  purchased: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 
