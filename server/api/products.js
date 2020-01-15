@@ -10,3 +10,13 @@ router.get('/', async (req, res, next) => {
     next(error)
   }
 })
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const productId = req.params.id
+    const singleProduct = await Products.findByPk(productId)
+    res.send(singleProduct)
+  } catch (error) {
+    next(error)
+  }
+})

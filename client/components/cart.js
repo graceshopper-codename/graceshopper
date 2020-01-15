@@ -34,10 +34,12 @@ export default class Cart extends React.Component {
             </ul>
             Total: {this.state.total}
           </div>
+
         ) : (
           <div>Please add items to cart</div>
         )}
-        <Link to="/cart/CheckoutForm">Checkout</Link>
+        <Link to="/cart/checkoutform">Checkout</Link>
+
       </div>
     )
   }

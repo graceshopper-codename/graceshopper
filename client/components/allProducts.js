@@ -2,6 +2,7 @@ import React from 'react'
 import {getAllProducts, addingToCart} from '../store/reducer'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export class AllProducts extends React.Component {
   constructor(props) {
@@ -21,7 +22,6 @@ export class AllProducts extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let products = this.props.products
 
     return (
@@ -30,7 +30,8 @@ export class AllProducts extends React.Component {
         {products &&
           products.map(product => (
             <div key={product.id}>
-              <h3>{product.title}</h3>
+              <Link to={`products/${product.id}`}>
+              <h3>{product.title}</h3> </Link>
               <img src={product.imageUrl} />
               <h4>${product.price}</h4>
               <button
@@ -44,6 +45,7 @@ export class AllProducts extends React.Component {
               >
                 Add To Cart
               </button>
+
             </div>
           ))}
       </div>
