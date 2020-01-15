@@ -22,8 +22,8 @@ class Cart {
     this.data.items.forEach(item => {
       let price = item.price
       let qty = item.qty
-      let amount = price * qty
-      this.data.total += amount
+      let amount = Math.round(price * qty * 100) / 100
+      this.data.total += Math.round(amount * 100) / 100
     })
   }
 
@@ -86,7 +86,8 @@ router.post('/', async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
   try {
-    res.json(req.session.cart)
+    console.log('req session at line 89', req.session.cart)
+    res.sendStatus(200)
   } catch (err) {
     next(err)
   }
