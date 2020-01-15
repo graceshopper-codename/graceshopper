@@ -15,3 +15,11 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.post('/', async (req, res, next) => {
+  try {
+    console.log('req body', req.body)
+  } catch (err) {
+    next(err)
+  }
+})

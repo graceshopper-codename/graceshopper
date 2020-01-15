@@ -3,10 +3,24 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import User from './user'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>BOILERMAKER</h1>
+    <div id="titleAndCart">
+      <Link to="/">
+        <h1>CODENAMES</h1>
+      </Link>
+      <div id="cart">
+        <Link to="/cart">
+          <img
+            src="https://assets1.risnews.com/styles/content_sm/s3/2018-04/shopping-cart.png?itok=LUk_XbaE"
+            height="70px"
+          />
+        </Link>
+      </div>
+    </div>
+    <User />
     <nav>
       {isLoggedIn ? (
         <div>
