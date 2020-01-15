@@ -3,9 +3,9 @@ const db = require('../db')
 
 const Order = db.define('order', {
   sessionId: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+    type: Sequelize.STRING
+    //    unique: true,
+    //    allowNull: false
   },
   payment: {
     type: Sequelize.ENUM('Credit Card', 'Paypal', 'Other'),
@@ -16,8 +16,8 @@ const Order = db.define('order', {
     allowNull: true
   },
   cost: {
-    type: Sequelize.INTEGER,
-    allowNull: false
+    type: Sequelize.INTEGER
+    //    allowNull: false
   },
   purchased: {
     type: Sequelize.BOOLEAN,
