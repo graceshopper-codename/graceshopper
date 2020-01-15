@@ -13,7 +13,6 @@ export class AllProducts extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let products = this.props.products
 
     return (
@@ -49,7 +48,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAllProducts: () => dispatch(getAllProducts()),
-  addingToCart: (qty, id) => dispatch(addingToCart(qty, id))
+  addingToCart: (qty, id) => () => dispatch(addingToCart(qty, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)

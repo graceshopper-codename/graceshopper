@@ -24,3 +24,9 @@ form div {
   display: flex;
   justify-content: flex-end;
 }
+
+#titleAndCart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
