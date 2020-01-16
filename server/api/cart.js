@@ -77,22 +77,14 @@ router.post('/', async (req, res, next) => {
     let qty = parseInt(req.body.qty, 10)
     let productId = parseInt(req.body.product_id, 10)
     let prod = await Products.findByPk(productId)
-    // let sessionId;
-    console.log('req user.id?', req.user.id)
-    let [order, orderCreated] = await Order.findOrCreate({
-      where: {
-        userId: req.user.id,
-        purchased: false
-      },
-      defaults: {
-        userId: req.user.id
-        // ,
-        // sessionId: sessionId
-      }
-    })
-    // console.log("order", order);
-    // console.log('orderCreated', orderCreated);
-
+    let userId = req.user ? req.user.id : 0
+    let [order, orderCreated] = await Order.findOrCreateOpenOrderByUser(
+      userId,
+      req.session.id
+    )
+    console.log('** REQ SESSION ID', req.session.id)
+    console.log('***USER ID ***', userId)
+    console.log('*** PROD PRICE', prod.price)
     let [cart, cartCreated] = await Cart.findOrCreate({
       where: {
         productId: prod.id,
@@ -105,33 +97,15 @@ router.post('/', async (req, res, next) => {
         orderId: order.id
       }
     })
-    console.log('***cart', cart)
-    console.log('*** CART CREATED', cartCreated)
+
     let updatedCart
-
-    if (!cartCreated) {
-      updatedCart = await cart.update({quantity: cart.quantity + 1})
-    }
-
-    console.log('***** CART *******', cart)
+    // if (!cartCreated) {
+    //   updatedCart = await cart.update({quantity: cart.quantity + 1})
+    // }
     res.status(200).send(updatedCart)
   } catch (err) {
     next(err)
   }
-  // Order.createOrFind(
-  //   where userId = req.session.userId && purchased?)
-
-  // )
-
-  // Cart.create()
-  // try {
-  //   const prod = await Products.findByPk(productId)
-  //   NewCart.addToCart(prod, qty)
-  //   NewCart.saveCart(req)
-  //   res.json(req.session.cart)
-  // } catch (err) {
-  //   next(err)
-  // }
 })
 
 router.get('/', async (req, res, next) => {
