@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 const db = require('../db')
 
 const Order = db.define('order', {
@@ -24,5 +25,31 @@ const Order = db.define('order', {
     defaultValue: false
   }
 })
+
+Order.findOrCreateOpenOrderByUser = function(userId, sessionId) {
+  if (userId) {
+    return this.findOrCreate({
+      where: {
+        userId: userId,
+        purchased: false
+      },
+      defaults: {
+        userId: userId,
+        sessionId: sessionId
+      }
+    })
+  } else {
+    return this.findOrCreate({
+      where: {
+        sessionId: sessionId,
+        purchased: false
+      },
+      defaults: {
+        userId: userId,
+        sessionId: sessionId
+      }
+    })
+  }
+}
 
 module.exports = Order
