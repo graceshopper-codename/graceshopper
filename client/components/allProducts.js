@@ -1,5 +1,5 @@
 import React from 'react'
-import {getAllProducts, addingToCart} from '../store/products'
+import {getAllProducts} from '../store/products'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
