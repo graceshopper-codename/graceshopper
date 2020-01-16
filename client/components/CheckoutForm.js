@@ -14,7 +14,8 @@ class CheckoutForm extends Component {
     this.state = {
       name: '',
       address: '',
-      payment: ''
+      payment: '',
+      userId: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -29,16 +30,18 @@ class CheckoutForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.purchase(this.state)
+    let form = Object.assign({}, this.state)
+    form.userId = this.props.userId
+    this.props.purchase(form)
     this.setState(defaultState)
   }
 
   render() {
-    console.log("HONDOFACE", this.props)
+    console.log('THE HONDO', this.state)
     return (
       <div className="form-container">
         <form className="checkout-form" onSubmit={this.handleSubmit}>
-        {/* <label htmlFor="orderId"> Order Number: </label>
+          {/* <label htmlFor="orderId"> Order Number: </label>
           <input
             name="orderId"
             type="text"
@@ -74,7 +77,7 @@ class CheckoutForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    purchase: (order) => dispatch(purchase(order))
+    purchase: order => dispatch(purchase(order))
   }
 }
 

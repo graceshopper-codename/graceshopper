@@ -12,7 +12,7 @@ const reducer = combineReducers({
   user: manageUsers,
   products: manageProducts,
   orders: manageOrders,
-  cart: manageCart
+  cart: manageCart,
   usersForAdmin: manageUsersForAdmin
 })
 const middleware = composeWithDevTools(

@@ -1,15 +1,11 @@
 const router = require('express').Router()
 const {Cart, Products, Order} = require('../db/models/index')
 
-
 //The Checkout Form Updating the order w/ address
 
-
-
 router.put('/checkout', async (req, res, next) => {
-  console.log("Nerf") 
+  console.log('Nerf')
   try {
-    
     let currentOrder = await Order.findByPk({
       where: {
         orderId: req.body.id
@@ -67,8 +63,6 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
-
-
 
 module.exports = router
 

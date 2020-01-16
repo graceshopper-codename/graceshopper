@@ -31,7 +31,7 @@ class Cart extends React.Component {
         ) : (
           <div>Please add items to cart</div>
         )}
-        <Link to="/cart/checkoutform">Checkout</Link>
+        <Link to="/cart/checkout">Checkout</Link>
       </div>
     )
   }
