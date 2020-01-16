@@ -1,5 +1,5 @@
 import React from 'react'
-import {allUsers} from '../store/user'
+import {allUsers, deleteUser} from '../store/user'
 import {connect} from 'react-redux'
 
 export class Users extends React.Component {
@@ -9,7 +9,7 @@ export class Users extends React.Component {
 
   render() {
     const users = this.props.user.users
-    console.log('**** allUsers', users)
+
     return (
       <div>
         <h1>AllUsers:</h1>
@@ -17,6 +17,9 @@ export class Users extends React.Component {
           users.map(user => (
             <div key={user.id}>
               <h4>{user.email}</h4>
+              <button type="submit" onClick={this.props.deleteUser(user.id)}>
+                Remove
+              </button>
             </div>
           ))}
       </div>
@@ -29,7 +32,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  allUsers: () => dispatch(allUsers())
+  allUsers: () => dispatch(allUsers()),
+  deleteUser: user => () => dispatch(deleteUser(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users)
