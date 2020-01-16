@@ -19,7 +19,8 @@ router.post('/', async (req, res, next) => {
       },
       defaults: {
         purchaseCost: prod.price,
-        quantity: 1,
+        productTitle: prod.title,
+        quantity: qty,
         productId: prod.id,
         orderId: order.id
       }
