@@ -8,8 +8,11 @@ export class User extends React.Component {
   }
   render() {
     const user = this.props.user
-    console.log(user)
-    return <h4>Accout email: {user.email}</h4>
+    return (
+      <div>
+        <h4>Accout email: {user.email}</h4>
+      </div>
+    )
   }
 }
 

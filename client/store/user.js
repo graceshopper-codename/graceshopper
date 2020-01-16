@@ -60,6 +60,9 @@ const manageUsers = (state = defaultUser, action) => {
       return action.user
     case REMOVE_USER:
       return defaultUser
+    // case GET_ALL_USERS:
+    //   return action
+
     default:
       return state
   }
