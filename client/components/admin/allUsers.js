@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {allUsers, deleteUser} from '../store/usersForAdmin'
+import {allUsers, deleteUser} from '../../store/usersForAdmin'
 
 export class Users extends React.Component {
   componentDidMount() {
@@ -9,10 +9,8 @@ export class Users extends React.Component {
 
   render() {
     const users = this.props.usersForAdmin.users
-    console.log(users)
 
     return (
-      // <h1>hiii</h1>
       <div>
         <h1>AllUsers:</h1>
         {users &&

@@ -1,5 +1,5 @@
 import React from 'react'
-import {me} from '../store/user'
+import {me} from '../../store/user'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
@@ -12,7 +12,7 @@ export const Admin = props => {
 
   return (
     <div>
-      <Link to="/users">{allUsers}</Link>
+      <Link to="/admin">{allUsers}</Link>
     </div>
   )
 }

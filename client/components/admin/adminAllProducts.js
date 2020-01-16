@@ -1,8 +1,12 @@
 import React from 'react'
-import {getAllProducts} from '../store/products'
+import {getAllProducts} from '../../store/products'
 import {connect} from 'react-redux'
 
 export class AdminAllProducts extends React.Component {
+  componentDidMount() {
+    this.props.getAllProducts()
+  }
+
   render() {
     const allProducts = this.props.products.products
     return (
