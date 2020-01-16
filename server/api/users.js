@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {User} = require('../db/models')
 module.exports = router
 
+//console.log req.user
 const isUser = (req, res, next) => {
   if (req.user) {
     try {
