@@ -5,12 +5,14 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import manageUsers from './user'
 import manageProducts from './products'
 import manageOrders from './orders'
+import manageCart from './cart'
 import manageUsersForAdmin from './usersForAdmin'
 
 const reducer = combineReducers({
   user: manageUsers,
   products: manageProducts,
   orders: manageOrders,
+  cart: manageCart
   usersForAdmin: manageUsersForAdmin
 })
 const middleware = composeWithDevTools(

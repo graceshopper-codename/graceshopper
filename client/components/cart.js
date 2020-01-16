@@ -1,46 +1,48 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Axios from 'axios'
+import {connect} from 'react-redux'
+import {getCart} from '../store/cart'
 
-export default class Cart extends React.Component {
+class Cart extends React.Component {
   constructor() {
     super()
     this.state = {}
   }
 
-  async componentDidMount() {
-    let cart = await Axios.get('/api/cart')
-    console.log('data', cart)
-    console.log(cart.data === '')
-    if (cart.data !== '') {
-      this.setState(cart.data)
-    }
-    console.log('this state', this.state)
+  componentDidMount() {
+    this.props.getCart()
   }
 
   render() {
-    console.log('STATE', this.state)
+    let cartItems = this.props.cart
     return (
       <div>
         <h1>Your Cart:</h1>
-        {this.state.items ? (
+        {cartItems ? (
           <div>
             <ul>
-              {this.state.items.map(item => (
-                <li key={item.id}>
-                  {item.title} {item.qty} {item.price}
+              {cartItems.map(item => (
+                <li key={item.productId}>
+                  {item.productId} {item.quantity} {item.purchaseCost}
                 </li>
               ))}
             </ul>
-            Total: {this.state.total}
           </div>
-
         ) : (
           <div>Please add items to cart</div>
         )}
         <Link to="/cart/checkoutform">Checkout</Link>
-
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  cart: state.cart
+})
+
+const mapDispatchToProps = dispatch => ({
+  getCart: () => dispatch(getCart())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

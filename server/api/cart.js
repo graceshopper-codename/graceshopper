@@ -1,77 +1,7 @@
 const router = require('express').Router()
 const {Cart, Products, Order} = require('../db/models/index')
 
-class cartClass {
-  constructor() {
-    this.data = {}
-    this.data.items = []
-    this.data.total = 0
-  }
-
-  inCart(productID = 0) {
-    let found = false
-    this.data.items.forEach(item => {
-      if (item.id === productID) {
-        found = true
-      }
-    })
-    return found
-  }
-
-  calculateTotal() {
-    this.data.items.forEach(item => {
-      let price = item.price
-      let qty = item.qty
-      let amount = Math.round(price * qty * 100) / 100
-      this.data.total += Math.round(amount * 100) / 100
-    })
-  }
-
-  addToCart(product = null, qty = 1) {
-    if (!this.inCart(product.product_id)) {
-      let prod = {
-        //add any info for each product 'product.price'
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        qty: qty
-      }
-      this.data.items.push(prod)
-      this.calculateTotal()
-    }
-  }
-
-  saveCart(request) {
-    if (request.session) {
-      request.session.cart = this.data
-    }
-  }
-
-  removeFromCart(id = 0) {
-    for (let i = 0; i < this.data.items.length; i++) {
-      let item = this.data.items[i]
-      if (item.id === id) {
-        this.data.items.splice(i, 1)
-        this.calculateTotal()
-      }
-    }
-  }
-
-  emptyCart(request) {
-    this.data.items = []
-    this.data.total = 0
-    if (request.session) {
-      request.session.cart.items = []
-      request.session.cart.total = 0
-    }
-  }
-
-  //update cart method goes here when the time comes (for adjusting quantity)
-}
-
-let NewCart = new Cart()
-
-// post '/api/cart' route will be called when adding new items to cart
+// post '/api/cart' route will be called when adding a single item to cart
 router.post('/', async (req, res, next) => {
   try {
     let qty = parseInt(req.body.qty, 10)
@@ -105,12 +35,14 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+// get method to cart will be called
 router.get('/', async (req, res, next) => {
   try {
     // let orderId = Order.find(where userId or sessionId !purchased)
-
-    console.log('req session at line 89', req.session.cart)
-    res.json(req.session.cart)
+    let userId = req.user ? req.user.id : null
+    let order = await Order.findOpenOrderByUser(userId, req.session.id)
+    let cartItems = await Cart.findByOrderId(order.id)
+    res.json(cartItems)
   } catch (err) {
     next(err)
   }
