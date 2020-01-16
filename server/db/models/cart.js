@@ -17,4 +17,19 @@ const Cart = db.define('cart', {
   }
 })
 
+Cart.findByOrderId = function(orderId) {
+  return this.findAll({
+    where: {orderId: orderId}
+  })
+}
+
+Cart.calculateOrderSubTotal = function(orderId) {
+  let cartItems = this.findByOrderId(orderId)
+  return cartItems.reduce(
+    acc,
+    item => acc + item.quantity * item.purchaseCost,
+    0
+  )
+}
+
 module.exports = Cart
