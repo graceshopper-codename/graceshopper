@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {purchase} from '../store/user'
+import {purchase} from '../store/orders'
 
 let defaultState = {
   name: '',
@@ -34,9 +34,16 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    console.log("HONDOFACE", this.props)
     return (
       <div className="form-container">
         <form className="checkout-form" onSubmit={this.handleSubmit}>
+        {/* <label htmlFor="orderId"> Order Number: </label>
+          <input
+            name="orderId"
+            type="text"
+            value={this.state.name}
+          /> */}
           <label htmlFor="name"> Name: </label>
           <input
             name="name"
@@ -67,7 +74,7 @@ class CheckoutForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    purchase: order => dispatch(purchase(order))
+    purchase: (order) => dispatch(purchase(order))
   }
 }
 

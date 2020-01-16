@@ -2,21 +2,22 @@ import axios from 'axios'
 
 //Action Types
 
-const CREATE_ORDER = 'CREATE_ORDER'
+const COMPLETE_ORDER = 'COMPLETE_ORDER'
 
 //Action Creators
 
-const createOrder = order => ({type: CREATE_ORDER, order})
+const completeOrder = (order) => ({type: COMPLETE_ORDER, order})
 
 //Thunk Creators
 
-export const purchase = order => {
+export const purchase = (order) => {
   return async dispatch => {
     try {
-      const data = await axios.post('/api/cart', order)
-      dispatch(createOrder(data))
+      console.log("ORDER", order)
+      const {data} = await axios.put('/api/cart/checkout', order)
+      dispatch(completeOrder(data))
     } catch (err) {
-      console.erroor(err)
+      console.error(err)
     }
   }
 }
@@ -25,7 +26,7 @@ export const purchase = order => {
 
 const manageOrders = (state = [], action) => {
   switch (action.type) {
-    case CREATE_ORDER:
+    case COMPLETE_ORDER:
       return action.order
     default:
       return state

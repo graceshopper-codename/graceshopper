@@ -1,6 +1,26 @@
 const router = require('express').Router()
 const {Cart, Products, Order} = require('../db/models/index')
 
+
+//The Checkout Form Updating the order w/ address
+router.put('/checkout', async (req, res, next) => {
+  console.log("Nerf") 
+  try {
+    
+    let currentOrder = await Order.findByPk({
+      where: {
+        orderId: req.body.id
+      }
+
+    res.send('woof')
+  } catch (err) {
+    next(err)
+  }
+})
+
+
+
+
 class cartClass {
   constructor() {
     this.data = {}
@@ -115,6 +135,8 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+
 
 module.exports = router
 
