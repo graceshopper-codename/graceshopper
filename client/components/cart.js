@@ -22,9 +22,9 @@ class Cart extends React.Component {
           <div>
             <ul>
               {cartItems.map(item => (
-                <li key={item.productId}>
-                  {item.productId} {item.quantity} {item.purchaseCost}
-                </li>
+                <div key={item.productId} className="cart-item">
+                  {item.productTitle} {item.quantity} {item.purchaseCost}
+                </div>
               ))}
             </ul>
           </div>
