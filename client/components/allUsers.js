@@ -1,6 +1,6 @@
 import React from 'react'
-import {allUsers, deleteUser} from '../store/user'
 import {connect} from 'react-redux'
+import {allUsers, deleteUser} from '../store/usersForAdmin'
 
 export class Users extends React.Component {
   componentDidMount() {
@@ -8,18 +8,21 @@ export class Users extends React.Component {
   }
 
   render() {
-    const users = this.props.user.users
+    const users = this.props.usersForAdmin.users
+    console.log(users)
 
     return (
+      // <h1>hiii</h1>
       <div>
         <h1>AllUsers:</h1>
         {users &&
           users.map(user => (
-            <div key={user.id}>
+            <div key={user.email}>
               <h4>{user.email}</h4>
               <button type="submit" onClick={this.props.deleteUser(user.id)}>
                 Remove
               </button>
+              {/* <button type='submit'onClick={ (() => user.isAdmin === !user.isAdmin) }>Admin</button> */}
             </div>
           ))}
       </div>
@@ -28,7 +31,7 @@ export class Users extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  usersForAdmin: state.usersForAdmin
 })
 
 const mapDispatchToProps = dispatch => ({

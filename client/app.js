@@ -7,6 +7,7 @@ import {Cart} from './components/cart'
 import SingleProduct from './components/singleProduct'
 import CheckoutForm from './components/CheckoutForm'
 import allUsers from './components/allUsers'
+// import AdminAllProducts from './components/adminAllProducts'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route exact path="/cart" component={Cart} />
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/cart/checkoutform" component={CheckoutForm} />
+        {/* <Route exact path="/admin/allProducts" component={AdminAllProducts} /> */}
         <Route path="/users" component={allUsers} />
       </div>
     </BrowserRouter>

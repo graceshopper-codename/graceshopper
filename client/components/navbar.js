@@ -21,7 +21,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </Link>
       </div>
     </div>
-    {/* <User /> */}
     <nav>
       {isLoggedIn ? (
         <div>
@@ -41,6 +40,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       )}
     </nav>
     <hr />
+    {/* <User /> */}
   </div>
 )
 
