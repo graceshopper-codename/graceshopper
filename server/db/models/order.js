@@ -1,25 +1,72 @@
-const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Order = db.define('order', {
-  userId: {
-    type: Sequelize.INTEGER,
-    unique: true,
-    allowNull: false
+  sessionId: {
+    type: Sequelize.STRING
+    //    unique: true,
+    //    allowNull: false
   },
   payment: {
     type: Sequelize.ENUM('Credit Card', 'Paypal', 'Other'),
-    allowNull: false
+    allowNull: true
   },
   address: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: true
   },
   cost: {
-    type: Sequelize.DECIMAL(10, 2),
-    allowNull: false
+    type: Sequelize.INTEGER
+    //    allowNull: false
+  },
+  purchased: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
+
+Order.findOpenOrderByUser = function(userId, sessionId) {
+  if (userId) {
+    return this.findOne({
+      where: {
+        userId: userId,
+        purchased: false
+      }
+    })
+  } else {
+    return this.findOne({
+      where: {
+        sessionId: sessionId,
+        purchased: false
+      }
+    })
+  }
+}
+
+Order.findOrCreateOpenOrderByUser = function(userId, sessionId) {
+  if (userId) {
+    return this.findOrCreate({
+      where: {
+        userId: userId,
+        purchased: false
+      },
+      defaults: {
+        userId: userId,
+        sessionId: sessionId
+      }
+    })
+  } else {
+    return this.findOrCreate({
+      where: {
+        sessionId: sessionId,
+        purchased: false
+      },
+      defaults: {
+        userId: userId,
+        sessionId: sessionId
+      }
+    })
+  }
+}
 
 module.exports = Order

@@ -9,7 +9,12 @@ async function seed() {
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
+    User.create({
+      email: 'cody@email.com',
+      password: '123',
+      name: 'NotCody',
+      isAdmin: true
+    }),
     User.create({email: 'murphy@email.com', password: 'woof'})
   ])
 
@@ -20,8 +25,9 @@ async function seed() {
       title: 'Everdell',
       type: 'family',
       description:
-        'Within the charming valley of Everdell, beneath the boughs of towering trees, among meandering streams and mossy hollows, a civilization of forest critters is thriving and expanding. From Everfrost to Bellsong, many a year have come and gone, but the time has come for new territories to be settled and new cities established. You will be the leader of a group of critters intent on just such a task. There are buildings to construct, lively characters to meet, events to host—you have a busy year ahead of yourself. Will the sun shine brightest on your city before the winter moon rises?',
-      price: 20.15,
+        'Within the charming valley of Everdell, beneath the boughs of towering trees, among meandering streams and mossy hollows, a civilization of forest critters is thriving and expanding. ',
+      price: 2015,
+      MSRP: 2215,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/WDbT-w4bNeIwxojLW92I_SO5GSU=/fit-in/246x300/pic3918905.png'
     }),
@@ -30,16 +36,18 @@ async function seed() {
       type: 'cooperative',
       description:
         'Spirit Island is a complex and thematic cooperative game about defending your island home from colonizing Invaders. Players are different spirits of the land, each with its own unique elemental powers',
-      price: 78.99,
+      price: 7899,
+      MSRP: 7899,
       imageUrl:
-        'https://cf.geekdo-images.com/itemrep/img/WDbT-w4bNeIwxojLW92I_SO5GSU=/fit-in/246x300/pic3918905.png'
+        'https://cf.geekdo-images.com/itemrep/img/0f6KLNq-ynIWcx3VuZ1QsGAfSRo=/fit-in/246x300/pic3615739.png'
     }),
     Products.create({
       title: 'Scythe',
       type: 'strategy',
       description:
         'Scythe is an engine-building game set in an alternate-history 1920s period. It is a time of farming and war, broken hearts and rusted gears, innovation and valor. ',
-      price: 78.99,
+      price: 7899,
+      MSRP: 5000,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/gLHDC5bCrxd1JhefjJ-VxW2zC54=/fit-in/246x300/pic3163924.jpg'
     }),
@@ -48,7 +56,8 @@ async function seed() {
       type: 'party',
       description:
         'Spyfall is a party game unlike any other, one in which you get to be a spy and try to understand what is going on around you. It is really simple!',
-      price: 14.99,
+      price: 1499,
+      MSRP: 500,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/8gQ9kYUqU8W5vbE1UnDqPvXHae4=/fit-in/246x300/pic2453926.jpg'
     })
@@ -58,15 +67,19 @@ async function seed() {
   const order = await Promise.all([
     Order.create({
       userId: 1,
+      sessionId: '239842389982498238332482387423',
       payment: 'Paypal',
       address: '177a Bleecker Street',
-      cost: 2899.04
+      cost: 289904,
+      purchased: true
     }),
     Order.create({
       userId: 2,
+      sessionId: '982349032840932843454379850',
       payment: 'Credit Card',
       address: '177b Bleecker Street',
-      cost: 246.08
+      cost: 24608,
+      purchased: false
     })
   ])
 

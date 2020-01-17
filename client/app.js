@@ -1,11 +1,14 @@
 import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
-import {Navbar} from './components'
+import {
+  Navbar,
+  AllProducts,
+  Cart,
+  SingleProduct,
+  AdminView,
+  Checkout
+} from './components'
 import Routes from './routes'
-import AllProducts from './components/AllProducts'
-import {Cart} from './components/cart'
-import SingleProduct from './components/singleProduct'
-import CheckoutForm from './components/CheckoutForm'
 
 const App = () => {
   return (
@@ -16,7 +19,8 @@ const App = () => {
         <Route exact path="/" component={AllProducts} />
         <Route exact path="/cart" component={Cart} />
         <Route path="/products/:id" component={SingleProduct} />
-        <Route path="/cart/checkoutform" component={CheckoutForm} />
+        <Route exact path="/cart/checkout" component={Checkout} />
+        <Route path="/admin" component={AdminView} />
       </div>
     </BrowserRouter>
   )
