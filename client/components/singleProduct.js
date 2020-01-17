@@ -2,7 +2,7 @@ import React from 'react'
 import {getSingleProduct} from '../store/products'
 import {connect} from 'react-redux'
 
-export class SingleProduct extends React.Component {
+class SingleProduct extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id
     this.props.getSingleProduct(id)
