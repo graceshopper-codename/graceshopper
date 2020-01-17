@@ -48,15 +48,26 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-router.delete('/items/:itemId', async (req, res, next) => {
+router.get('/:itemId', async (req, res, next) => {
   try {
-    let itemId = req.params.itemId
+    const itemId = req.params.itemId
+    let userId = req.user ? req.user.id : null
+    let order = await Order.findOpenOrderByUser(userId, req.session.id)
+    let cartItems = await Cart.findOneItem(order.id, itemId)
+    res.json(cartItems)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:itemId', async (req, res, next) => {
+  try {
     let cartItems = await Cart.destroy({
       where: {
-        productId: itemId
+        productId: req.params.itemId
       }
     })
-    res.json(cartItems).sendStatus(204)
+    res.json(cartItems)
   } catch (err) {
     next(err)
   }

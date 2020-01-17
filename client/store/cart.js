@@ -7,8 +7,8 @@ const DELETE_ITEM = 'DELETE_ITEM'
 
 //Action Creators
 
-const viewCart = items => ({type: GET_CART, items: items})
-const deletingItem = (item, itemId) => ({type: DELETE_ITEM, item, itemId})
+const viewCart = items => ({type: GET_CART, items})
+const deletingItem = productId => ({type: DELETE_ITEM, productId})
 
 //Thunk Creator
 
@@ -26,8 +26,8 @@ export const getCart = () => {
 export const deletingTheItem = itemId => {
   return async dispatch => {
     try {
-      const result = await axios.delete(`/api/cart/items/${itemId}`)
-      dispatch(deletingItem(result.data, itemId))
+      await axios.delete(`/api/cart/${itemId}`)
+      dispatch(deletingItem(itemId))
     } catch (err) {
       console.error(err)
     }
@@ -43,7 +43,7 @@ const manageCart = (state = [], action) => {
       return {
         ...state,
         cart: state.items.filter(item => {
-          return item.id !== 3
+          return item.productId !== action.productId
         })
       }
     default:

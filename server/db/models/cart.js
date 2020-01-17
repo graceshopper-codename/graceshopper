@@ -23,6 +23,15 @@ Cart.findByOrderId = function(orderId) {
   })
 }
 
+Cart.findOneItem = function(orderId, productId) {
+  return this.findAll({
+    where: {
+      orderId: orderId,
+      productId: productId
+    }
+  })
+}
+
 Cart.calculateOrderSubTotal = function(orderId) {
   let cartItems = this.findByOrderId(orderId)
   return cartItems.reduce(
