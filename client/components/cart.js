@@ -23,23 +23,24 @@ class Cart extends React.Component {
           <div>
             <ul>
               {cartItems.map(item => (
-                <li key={item.productId}>
+                <div key={item.productId} className="cart-item">
                   <h1>{item.productId}</h1>
-                  {item.productId} {item.quantity} {item.purchaseCost}
+                  {item.productTitle} {item.quantity} {item.purchaseCost}
                   <button
                     type="submit"
                     onClick={this.props.deletingTheItem(item.productId)}
                   >
                     Remove Item
                   </button>
-                </li>
+                </div>    
+                </div>
               ))}
             </ul>
           </div>
         ) : (
           <div>Please add items to cart</div>
         )}
-        <Link to="/cart/checkoutform">Checkout</Link>
+        <Link to="/cart/checkout">Checkout</Link>
       </div>
     )
   }

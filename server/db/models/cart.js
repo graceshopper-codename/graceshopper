@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
+const Products = require('./index')
 
 const Cart = db.define('cart', {
   orderId: {
@@ -7,6 +8,9 @@ const Cart = db.define('cart', {
   },
   productId: {
     type: Sequelize.INTEGER
+  },
+  productTitle: {
+    type: Sequelize.STRING
   },
   quantity: {
     type: Sequelize.INTEGER
@@ -35,8 +39,7 @@ Cart.findOneItem = function(orderId, productId) {
 Cart.calculateOrderSubTotal = function(orderId) {
   let cartItems = this.findByOrderId(orderId)
   return cartItems.reduce(
-    acc,
-    item => acc + item.quantity * item.purchaseCost,
+    (acc, item) => acc + item.quantity * item.purchaseCost,
     0
   )
 }

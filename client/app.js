@@ -5,7 +5,7 @@ import Routes from './routes'
 import AllProducts from './components/AllProducts'
 import {Cart} from './components/cart'
 import SingleProduct from './components/singleProduct'
-import CheckoutForm from './components/CheckoutForm'
+import Checkout from './components/Checkout/checkout'
 import {AdminView} from './components/admin/adminView'
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
         <Route exact path="/" component={AllProducts} />
         <Route exact path="/cart" component={Cart} />
         <Route path="/products/:id" component={SingleProduct} />
-        <Route path="/cart/checkoutform" component={CheckoutForm} />
+        <Route exact path="/cart/checkout" component={Checkout} />
         <Route path="/admin" component={AdminView} />
       </div>
     </BrowserRouter>

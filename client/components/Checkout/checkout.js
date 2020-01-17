@@ -1,16 +1,19 @@
 import React from 'react'
-import {me} from '../store/user'
+import {me} from '../../store/user'
 import {connect} from 'react-redux'
+import CheckoutForm from './CheckoutForm'
 
 export class User extends React.Component {
   componentDidMount() {
     this.props.me()
   }
+
   render() {
-    const user = this.props.user
+    const userId = this.props.user.id
+
     return (
       <div>
-        <h4>Account email: {user.email}</h4>
+        <CheckoutForm userId={userId} />
       </div>
     )
   }
