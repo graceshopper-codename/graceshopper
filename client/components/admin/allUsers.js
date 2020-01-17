@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {allUsers, deleteUser} from '../../store/usersForAdmin'
 
-export class Users extends React.Component {
+class Users extends React.Component {
   componentDidMount() {
     this.props.allUsers()
   }
