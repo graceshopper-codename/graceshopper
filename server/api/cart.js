@@ -48,6 +48,20 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.delete('/items/:itemId', async (req, res, next) => {
+  try {
+    let itemId = req.params.itemId
+    let cartItems = await Cart.destroy({
+      where: {
+        productId: itemId
+      }
+    })
+    res.json(cartItems).sendStatus(204)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router
 
 //take out product id stuff
