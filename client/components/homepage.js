@@ -1,11 +1,11 @@
 import React from 'react'
-import {getAllProducts} from '../store/products'
+import {getSaleProducts} from '../store/products'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import AddToCart from './addToCart'
 
-class AllProducts extends React.Component {
+export class HomePage extends React.Component {
   constructor(props) {
     super(props)
     this.addToCart = this.addToCart.bind(this)
@@ -17,7 +17,7 @@ class AllProducts extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getAllProducts()
+    this.props.getSaleProducts()
   }
 
   render() {
@@ -48,7 +48,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAllProducts: () => dispatch(getAllProducts())
+  getSaleProducts: () => dispatch(getSaleProducts())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllProducts)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

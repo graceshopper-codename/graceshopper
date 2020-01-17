@@ -5,12 +5,14 @@ import axios from 'axios'
 const ALL_PRODUCTS = 'ALL_PRODUCTS'
 const SINGLE_PRODUCT = 'SINGLE_PRODUCT'
 const DELETE_PRODUCT = 'DELETE_PRODUCT'
+const SALE_PRODUCTS = 'SALE_PRODUCTS'
 
 //Action Creators
 
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
 const singleProduct = product => ({type: SINGLE_PRODUCT, product})
 const deletingProduct = productId => ({type: DELETE_PRODUCT, productId})
+const saleProducts = products => ({type: SALE_PRODUCTS, products})
 
 //Thunk Creator
 
@@ -36,7 +38,8 @@ export const getSingleProduct = product => {
   }
 }
 
-export const deleteProduct = product => {
+
+eexport const deleteProduct = product => {
   return async dispatch => {
     try {
       const result = await axios.delete(`/api/products/${product}`)
@@ -46,6 +49,18 @@ export const deleteProduct = product => {
     }
   }
 }
+        
+export const getSaleProducts = () => {
+  return async dispatch => {
+    try {
+      const result = await axios.get('/api/products/sale')
+      dispatch(viewProducts(result.data))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 //Reducer
 
 const manageProducts = (state = [], action) => {
@@ -61,6 +76,8 @@ const manageProducts = (state = [], action) => {
           return product.id !== action.productId
         })
       }
+    case SALE_PRODUCTS:
+      return action
     default:
       return state
   }
