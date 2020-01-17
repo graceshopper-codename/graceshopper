@@ -5,7 +5,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 import AddToCart from './addToCart'
 
-export class AllProducts extends React.Component {
+class AllProducts extends React.Component {
   constructor(props) {
     super(props)
     this.addToCart = this.addToCart.bind(this)

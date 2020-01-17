@@ -2,7 +2,7 @@ import React from 'react'
 import {me} from '../store/user'
 import {connect} from 'react-redux'
 
-export class User extends React.Component {
+class User extends React.Component {
   componentDidMount() {
     this.props.me()
   }

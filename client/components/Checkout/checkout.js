@@ -3,7 +3,7 @@ import {me} from '../../store/user'
 import {connect} from 'react-redux'
 import CheckoutForm from './CheckoutForm'
 
-export class User extends React.Component {
+class User extends React.Component {
   componentDidMount() {
     this.props.me()
   }
