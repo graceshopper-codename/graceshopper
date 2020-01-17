@@ -9,6 +9,7 @@ const SINGLE_PRODUCT = 'SINGLE_PRODUCT'
 
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
 const singleProduct = product => ({type: SINGLE_PRODUCT, product})
+const saleProducts = products => ({type: SALE_PRODUCTS, products})
 
 //Thunk Creator
 
@@ -34,6 +35,17 @@ export const getSingleProduct = product => {
   }
 }
 
+export const getSaleProducts = () => {
+  return async dispatch => {
+    try {
+      const result = await axios.get('/api/products/sale')
+      dispatch(viewProducts(result.data))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 //Reducer
 
 const manageProducts = (state = [], action) => {
@@ -41,6 +53,8 @@ const manageProducts = (state = [], action) => {
     case ALL_PRODUCTS:
       return action
     case SINGLE_PRODUCT:
+      return action
+    case SALE_PRODUCT:
       return action
     default:
       return state

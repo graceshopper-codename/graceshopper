@@ -20,3 +20,16 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
+router.get('/sale', async (req, res, next) => {
+  try {
+    const saleProducts = await Products.findAll({
+      where: {
+        price: {[Op.lt]: MSRP}
+      }
+    })
+    res.send(saleProducts)
+  } catch (error) {
+    next(error)
+  }
+})
