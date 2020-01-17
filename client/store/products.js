@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const ALL_PRODUCTS = 'ALL_PRODUCTS'
 const SINGLE_PRODUCT = 'SINGLE_PRODUCT'
+const SALE_PRODUCTS = 'SALE_PRODUCTS'
 
 //Action Creators
 
@@ -54,7 +55,7 @@ const manageProducts = (state = [], action) => {
       return action
     case SINGLE_PRODUCT:
       return action
-    case SALE_PRODUCT:
+    case SALE_PRODUCTS:
       return action
     default:
       return state
