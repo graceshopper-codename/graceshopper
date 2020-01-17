@@ -1,5 +1,5 @@
 import React from 'react'
-import {getAllProducts} from '../../store/products'
+import {getAllProducts, deleteProduct} from '../../store/products'
 import {connect} from 'react-redux'
 
 export class AdminAllProducts extends React.Component {
@@ -17,6 +17,12 @@ export class AdminAllProducts extends React.Component {
             <div key={product.id}>
               <img src={product.imageUrl} />
               <h4>${product.price}</h4>
+              <button
+                type="submit"
+                onClick={this.props.deleteProduct(product.id)}
+              >
+                Remove Product
+              </button>
             </div>
           ))}
       </div>
@@ -29,7 +35,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAllProducts: () => dispatch(getAllProducts())
+  getAllProducts: () => dispatch(getAllProducts()),
+  deleteProduct: product => () => dispatch(deleteProduct(product))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminAllProducts)
