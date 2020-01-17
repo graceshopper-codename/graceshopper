@@ -3,6 +3,7 @@ import {getAllProducts} from '../store/products'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import AddToCart from './addToCart'
 
 export class AllProducts extends React.Component {
   constructor(props) {
@@ -33,17 +34,8 @@ export class AllProducts extends React.Component {
               </Link>
               <img src={product.imageUrl} />
               <h4>${product.price}</h4>
-              <button
-                onClick={() =>
-                  this.addToCart({
-                    qty: 1,
-                    product_id: product.id
-                  })
-                }
-                type="submit"
-              >
-                Add To Cart
-              </button>
+
+              <AddToCart product={product} add={this.addToCart} />
             </div>
           ))}
       </div>
