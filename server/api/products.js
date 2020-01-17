@@ -21,15 +21,27 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.get('/sale', async (req, res, next) => {
+router.get('/:itemId', async (req, res, next) => {
   try {
-    const saleProducts = await Products.findAll({
+    const itemId = req.params.itemId
+    let userId = req.user ? req.user.id : null
+    let order = await Order.findOpenOrderByUser(userId, req.session.id)
+    let cartItems = await Cart.findOneItem(order.id, itemId)
+    res.json(cartItems)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:itemId', async (req, res, next) => {
+  try {
+    let cartItems = await Cart.destroy({
       where: {
-        price: {[Op.lt]: MSRP}
+        productId: req.params.itemId
       }
     })
-    res.send(saleProducts)
-  } catch (error) {
-    next(error)
+    res.json(cartItems)
+  } catch (err) {
+    next(err)
   }
 })

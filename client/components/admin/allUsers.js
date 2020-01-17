@@ -20,7 +20,6 @@ class Users extends React.Component {
               <button type="submit" onClick={this.props.deleteUser(user.id)}>
                 Remove
               </button>
-              {/* <button type='submit'onClick={ (() => user.isAdmin === !user.isAdmin) }>Admin</button> */}
             </div>
           ))}
       </div>
