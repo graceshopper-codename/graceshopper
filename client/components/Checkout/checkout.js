@@ -1,5 +1,5 @@
 import React from 'react'
-import {me} from '../store/user'
+import {me} from '../../store/user'
 import {connect} from 'react-redux'
 import CheckoutForm from './CheckoutForm'
 
