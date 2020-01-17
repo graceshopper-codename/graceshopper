@@ -27,6 +27,7 @@ async function seed() {
       description:
         'Within the charming valley of Everdell, beneath the boughs of towering trees, among meandering streams and mossy hollows, a civilization of forest critters is thriving and expanding. ',
       price: 2015,
+      MSRP: 2215,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/WDbT-w4bNeIwxojLW92I_SO5GSU=/fit-in/246x300/pic3918905.png'
     }),
@@ -36,6 +37,7 @@ async function seed() {
       description:
         'Spirit Island is a complex and thematic cooperative game about defending your island home from colonizing Invaders. Players are different spirits of the land, each with its own unique elemental powers',
       price: 7899,
+      MSRP: 7899,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/0f6KLNq-ynIWcx3VuZ1QsGAfSRo=/fit-in/246x300/pic3615739.png'
     }),
@@ -45,6 +47,7 @@ async function seed() {
       description:
         'Scythe is an engine-building game set in an alternate-history 1920s period. It is a time of farming and war, broken hearts and rusted gears, innovation and valor. ',
       price: 7899,
+      MSRP: 5000,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/gLHDC5bCrxd1JhefjJ-VxW2zC54=/fit-in/246x300/pic3163924.jpg'
     }),
@@ -54,6 +57,7 @@ async function seed() {
       description:
         'Spyfall is a party game unlike any other, one in which you get to be a spy and try to understand what is going on around you. It is really simple!',
       price: 1499,
+      MSRP: 500,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/8gQ9kYUqU8W5vbE1UnDqPvXHae4=/fit-in/246x300/pic2453926.jpg'
     })

@@ -26,6 +26,10 @@ const Products = db.define('products', {
     type: Sequelize.INTEGER,
     allowNull: false
   },
+  MSRP: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   imageUrl: {
     type: Sequelize.TEXT,
     allowNull: false
