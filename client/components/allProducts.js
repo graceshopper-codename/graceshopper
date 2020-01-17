@@ -3,6 +3,7 @@ import {getAllProducts} from '../store/products'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import AddToCart from './addToCart'
 
 export class AllProducts extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ export class AllProducts extends React.Component {
               >
                 Add To Cart
               </button>
+              <AddToCart prod={product} add={this.addToCart} />
             </div>
           ))}
       </div>
