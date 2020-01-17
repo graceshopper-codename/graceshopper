@@ -4,15 +4,19 @@ const {Cart, Products, Order} = require('../db/models/index')
 //The Checkout Form Updating the order w/ address
 
 router.put('/checkout', async (req, res, next) => {
-  console.log('Nerf')
   try {
-    let currentOrder = await Order.findByPk({
+    let currentOrder = await Order.findOne({
       where: {
-        orderId: req.body.id
+        userId: req.body.userId,
+        purchased: false
       }
     })
-
-    res.send('woof')
+    let updatedOrder = await currentOrder.update({
+      address: req.body.address,
+      purchased: true,
+      payment: req.body.payment
+    })
+    res.status(200).send(updatedOrder)
   } catch (err) {
     next(err)
   }
