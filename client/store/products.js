@@ -56,7 +56,8 @@ const manageProducts = (state = [], action) => {
     case SINGLE_PRODUCT:
       return action
     case ADD_PRODUCT:
-      return action
+      state.products.push(action.product)
+      return {...state}
     default:
       return state
   }

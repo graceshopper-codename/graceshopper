@@ -28,6 +28,8 @@ const Products = db.define('products', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
+    defaultValue:
+      'https://cf.geekdo-images.com/itemrep/img/U28cezkt4voh5iEceBV8kKM5n64=/fit-in/246x300/pic4781085.jpg',
     allowNull: false
   }
 })

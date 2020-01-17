@@ -6,8 +6,7 @@ let defaultState = {
   title: '',
   type: '',
   description: '',
-  price: '',
-  imageUrl: ''
+  price: ''
 }
 
 class NewBoardGameForm extends Component {
@@ -17,8 +16,7 @@ class NewBoardGameForm extends Component {
       title: '',
       type: '',
       description: '',
-      price: '',
-      imageUrl: ''
+      price: ''
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -67,13 +65,6 @@ class NewBoardGameForm extends Component {
             name="price"
             type="text"
             value={this.state.price}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="imageUrl"> Image URL: </label>
-          <input
-            name="imageUrl"
-            type="text"
-            value={this.state.imageUrl}
             onChange={this.handleChange}
           />
           <button type="submit">Submit</button>
