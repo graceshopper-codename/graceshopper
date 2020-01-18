@@ -36,4 +36,12 @@ const Products = db.define('products', {
   }
 })
 
+Products.findByTag = function() {
+  return this.findAll({
+    where: {
+      price: {[Op.lt]: MSRP}
+    }
+  })
+}
+
 module.exports = Products
