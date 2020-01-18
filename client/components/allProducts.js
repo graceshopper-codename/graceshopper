@@ -25,7 +25,7 @@ class AllProducts extends React.Component {
 
     return (
       <div className="all-products">
-        <h3>Products:</h3>
+        <h1>Products:</h1>
         <div className="products-container">
           {products &&
             products.map(product => (
