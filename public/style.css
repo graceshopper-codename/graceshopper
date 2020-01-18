@@ -27,10 +27,11 @@ a:visited {
   padding: 0 1em;
 }
 
-#nav-bar-container h1 {
+#site-name {
   font-family: 'Rock Salt', cursive;
   color: #395480;
   font-size: 2em;
+  margin: 0.2em;
 }
 
 #nav-bar {
@@ -39,6 +40,11 @@ a:visited {
   justify-content: space-evenly;
   width: 40%;
   margin: 1em 0;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
 }
 
 .all-products h1 {
@@ -61,4 +67,22 @@ a:visited {
   display: flex;
   justify-content: space-between;
   margin: 5px;
+}
+
+.product-title {
+  text-align: center;
+  font-size: 120%;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+
+.cart {
+  width: 70%;
+}
+
+.cart tfoot {
+  margin: 1em;
 }

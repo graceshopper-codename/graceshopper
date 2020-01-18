@@ -62,8 +62,12 @@ router.get('/', async (req, res, next) => {
     // let orderId = Order.find(where userId or sessionId !purchased)
     let userId = req.user ? req.user.id : null
     let order = await Order.findOpenOrderByUser(userId, req.session.id)
-    let cartItems = await Cart.findByOrderId(order.id)
-    res.json(cartItems)
+    if (order) {
+      let cartItems = await Cart.findByOrderId(order.id)
+      res.json(cartItems)
+    } else {
+      res.json(order)
+    }
   } catch (err) {
     next(err)
   }
@@ -88,6 +92,8 @@ router.delete('/:itemId', async (req, res, next) => {
         productId: req.params.itemId
       }
     })
+    console.log('cartitems', cartItems)
+    console.log('***productid', req.params.itemId)
     res.json(cartItems)
   } catch (err) {
     next(err)
