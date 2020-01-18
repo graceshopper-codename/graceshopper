@@ -3,14 +3,33 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import Admin from './admin/admin'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <div id="titleAndCart">
+  <div id="titleAndCart">
+    <div>
       <Link to="/">
         <h1>CODENAMES</h1>
       </Link>
+    </div>
+    <nav id="nav-bar">
+      {isLoggedIn ? (
+        <div>
+          {/* The navbar will show these links after you log in */}
+          <Link to="/account">Account</Link>
+          <a href="#" onClick={handleClick}>
+            Logout
+          </a>
+        </div>
+      ) : (
+        <div>
+          {/* The navbar will show these links before you log in */}
+          <Link to="/account">Login/Signup</Link>
+        </div>
+      )}
+      <div>
+        <Link to="/products">All Products</Link>
+      </div>
+
       <div id="cart">
         <Link to="/cart">
           <img
@@ -19,26 +38,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           />
         </Link>
       </div>
-    </div>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-          <Admin />
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
     </nav>
-    <hr />
   </div>
 )
 
