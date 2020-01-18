@@ -49,11 +49,11 @@ export const deleteProduct = product => {
   }
 }
 
-export const showSales = () => {
+export const getSaleProducts = () => {
   return async dispatch => {
     try {
       const result = await axios.get('/api/products/sale')
-      dispatch(saleProducts(result.data))
+      dispatch(viewProducts(result.data))
     } catch (err) {
       console.error(err)
     }
