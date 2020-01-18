@@ -20,13 +20,13 @@ form div {
   display: inline-block;
 }
 
-#cart {
-  display: flex;
-  justify-content: flex-end;
-}
-
 #titleAndCart {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+#nav-bar {
+  display: flex;
+  flex-direction: row;
 }
