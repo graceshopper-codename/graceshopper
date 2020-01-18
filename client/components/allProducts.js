@@ -24,20 +24,23 @@ class AllProducts extends React.Component {
     let products = this.props.products.products
 
     return (
-      <div>
-        <h1>Products:</h1>
-        {products &&
-          products.map(product => (
-            <div key={product.id}>
-              <Link to={`products/${product.id}`}>
-                <h3>{product.title}</h3>{' '}
-              </Link>
-              <img src={product.imageUrl} />
-              <h4>${product.price}</h4>
-
-              <AddToCart product={product} add={this.addToCart} />
-            </div>
-          ))}
+      <div className="all-products">
+        <h3>Products:</h3>
+        <div className="products-container">
+          {products &&
+            products.map(product => (
+              <div key={product.id} className="product-container">
+                <Link to={`products/${product.id}`}>
+                  <div className="product-title">{product.title}</div>
+                </Link>
+                <img width={300} height={300} src={product.imageUrl} />
+                <div className="product-price">
+                  ${product.price / 100}
+                  <AddToCart product={product} add={this.addToCart} />
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
     )
   }

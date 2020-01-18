@@ -6,7 +6,7 @@ import Routes from './routes'
 const App = () => {
   return (
     <BrowserRouter>
-      <div>
+      <div className="main-app">
         <Route path="/" component={Navbar} />
         <Route path="/" component={Routes} />
         <Route exact path="/" component={AllProducts} />

@@ -1,32 +1,64 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #efefd0;
+  margin: 0;
+}
+
+.main-app > div {
+  margin: 10px;
 }
 
 a {
   text-decoration: none;
+  color: #004e89;
 }
 
-label {
-  display: block;
+a:visited {
+  color: #004e89;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
-
-form div {
-  margin: 1em;
-  display: inline-block;
-}
-
-#titleAndCart {
+#nav-bar-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: #c2e7da;
+  height: 10%;
+  margin: 0;
+  padding: 0 1em;
+}
+
+#nav-bar-container h1 {
+  font-family: 'Rock Salt', cursive;
+  color: #395480;
+  font-size: 2em;
 }
 
 #nav-bar {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  width: 40%;
+  margin: 1em 0;
+}
+
+.all-products h1 {
+  margin: 20px;
+}
+
+.products-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.product-price {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
 }
