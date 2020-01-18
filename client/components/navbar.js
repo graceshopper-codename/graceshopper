@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div id="titleAndCart">
+  <div id="nav-bar-container">
     <div>
       <Link to="/">
         <h1>CODENAMES</h1>
@@ -33,8 +33,9 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       <div id="cart">
         <Link to="/cart">
           <img
+            height={50}
+            width={50}
             src="https://assets1.risnews.com/styles/content_sm/s3/2018-04/shopping-cart.png?itok=LUk_XbaE"
-            height="70px"
           />
         </Link>
       </div>
