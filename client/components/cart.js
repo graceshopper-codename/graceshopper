@@ -32,7 +32,6 @@ class Cart extends React.Component {
                   >
                     Remove Item
                   </button>
-                </div>    
                 </div>
               ))}
             </ul>
