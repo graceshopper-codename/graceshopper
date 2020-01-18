@@ -49,11 +49,7 @@ export const deleteProduct = product => {
   }
 }
 
-<<<<<<< HEAD
-export const getSaleProducts = () => {
-=======
 export const showSales = () => {
->>>>>>> homepage
   return async dispatch => {
     try {
       const result = await axios.get('/api/products/sale')
