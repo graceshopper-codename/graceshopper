@@ -38,8 +38,7 @@ export const getSingleProduct = product => {
   }
 }
 
-
-eexport const deleteProduct = product => {
+export const deleteProduct = product => {
   return async dispatch => {
     try {
       const result = await axios.delete(`/api/products/${product}`)
@@ -49,7 +48,7 @@ eexport const deleteProduct = product => {
     }
   }
 }
-        
+
 export const getSaleProducts = () => {
   return async dispatch => {
     try {
