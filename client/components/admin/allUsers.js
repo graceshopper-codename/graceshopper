@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {allUsers, deleteUser} from '../../store/usersForAdmin'
 
-export class Users extends React.Component {
+class Users extends React.Component {
   componentDidMount() {
     this.props.allUsers()
   }
@@ -20,7 +20,6 @@ export class Users extends React.Component {
               <button type="submit" onClick={this.props.deleteUser(user.id)}>
                 Remove
               </button>
-              {/* <button type='submit'onClick={ (() => user.isAdmin === !user.isAdmin) }>Admin</button> */}
             </div>
           ))}
       </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {getAllProducts} from '../../store/products'
+import {getAllProducts, deleteProduct} from '../../store/products'
 import {connect} from 'react-redux'
 import NewboardGameForm from '../NewBoardGameForm'
 
@@ -12,12 +12,18 @@ export class AdminAllProducts extends React.Component {
     const allProducts = this.props.products.products
     return (
       <div>
-        <h1>Products:</h1>
+        <h3>Products:</h3>
         {allProducts &&
           allProducts.map(product => (
             <div key={product.id}>
               <img src={product.imageUrl} />
               <h4>${product.price}</h4>
+              <button
+                type="submit"
+                onClick={this.props.deleteProduct(product.id)}
+              >
+                Remove Product
+              </button>
             </div>
           ))}
         <div>
@@ -33,7 +39,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAllProducts: () => dispatch(getAllProducts())
+  getAllProducts: () => dispatch(getAllProducts()),
+  deleteProduct: product => () => dispatch(deleteProduct(product))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminAllProducts)

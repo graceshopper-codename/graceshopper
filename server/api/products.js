@@ -11,6 +11,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/sale', async (req, res, next) => {
+  try {
+    const saleProducts = await Products.findSales()
+    res.send(saleProducts)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:id', async (req, res, next) => {
   try {
     const productId = req.params.id
@@ -20,6 +29,7 @@ router.get('/:id', async (req, res, next) => {
     next(error)
   }
 })
+
 
 // router.post('/', async (req, res, next) => {
 //   try {
@@ -41,4 +51,16 @@ router.post('/', async (req, res, next) => {
   Products.create(req.body)
     .then(product => res.json(product))
     .catch(next)
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    let cartItems = await Products.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.json(cartItems)
+  } catch (err) {
+    next(err)
+  }
 })

@@ -2,7 +2,7 @@ import React from 'react'
 import Users from './allUsers'
 import AdminAllProducts from './adminAllProducts'
 
-export class AdminView extends React.Component {
+export default class AdminView extends React.Component {
   render() {
     return (
       <div>

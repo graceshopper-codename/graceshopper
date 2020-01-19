@@ -1,7 +1,27 @@
 const router = require('express').Router()
 const {Cart, Products, Order} = require('../db/models/index')
 
-// post '/api/cart' route will be called when adding a single item to cart
+//The Checkout Form Updating the order w/ address
+
+router.put('/checkout', async (req, res, next) => {
+  try {
+    let currentOrder = await Order.findOne({
+      where: {
+        userId: req.body.userId,
+        purchased: false
+      }
+    })
+    let updatedOrder = await currentOrder.update({
+      address: req.body.address,
+      purchased: true,
+      payment: req.body.payment
+    })
+    res.status(200).send(updatedOrder)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try {
     let qty = parseInt(req.body.qty, 10)
@@ -19,7 +39,8 @@ router.post('/', async (req, res, next) => {
       },
       defaults: {
         purchaseCost: prod.price,
-        quantity: 1,
+        productTitle: prod.title,
+        quantity: qty,
         productId: prod.id,
         orderId: order.id
       }
@@ -41,7 +62,59 @@ router.get('/', async (req, res, next) => {
     // let orderId = Order.find(where userId or sessionId !purchased)
     let userId = req.user ? req.user.id : null
     let order = await Order.findOpenOrderByUser(userId, req.session.id)
-    let cartItems = await Cart.findByOrderId(order.id)
+    if (order) {
+      let cartItems = await Cart.findByOrderId(order.id)
+      res.json(cartItems)
+    } else {
+      res.json(order)
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+router.get('/history', async (req, res, next) => {
+  try {
+    let userId = req.user ? req.user.id : null
+    let orders = await Order.findAll({
+      where: {
+        userId: userId,
+        purchased: true
+      }
+    })
+    const allItemsId = orders.map(order => order.id)
+    const stuff = await Cart.findAll({
+      where: {
+        orderId: allItemsId
+      }
+    })
+
+    res.send(stuff)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/:itemId', async (req, res, next) => {
+  try {
+    const itemId = req.params.itemId
+    let userId = req.user ? req.user.id : null
+    let order = await Order.findOpenOrderByUser(userId, req.session.id)
+    let cartItems = await Cart.findOneItem(order.id, itemId)
+    res.json(cartItems)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.delete('/:itemId', async (req, res, next) => {
+  try {
+    let cartItems = await Cart.destroy({
+      where: {
+        productId: req.params.itemId
+      }
+    })
+    console.log('cartitems', cartItems)
+    console.log('***productid', req.params.itemId)
     res.json(cartItems)
   } catch (err) {
     next(err)

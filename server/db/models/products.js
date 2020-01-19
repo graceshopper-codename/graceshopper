@@ -10,6 +10,11 @@ const Products = db.define('products', {
   },
   type: {
     type: Sequelize.ENUM(
+      'Deckbuilding',
+      'Strategy',
+      'Family',
+      'Party',
+      'Cooperative',
       'deckbuilding',
       'strategy',
       'family',
@@ -26,6 +31,10 @@ const Products = db.define('products', {
     type: Sequelize.INTEGER,
     allowNull: false
   },
+  MSRP: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   imageUrl: {
     type: Sequelize.TEXT,
     defaultValue:
@@ -33,5 +42,15 @@ const Products = db.define('products', {
     allowNull: false
   }
 })
+
+Products.findSales = function() {
+  return this.findAll({
+    where: {
+      price: {
+        [Sequelize.Op.lt]: 6000
+      }
+    }
+  })
+}
 
 module.exports = Products

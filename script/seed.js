@@ -23,39 +23,103 @@ async function seed() {
   const products = await Promise.all([
     Products.create({
       title: 'Everdell',
-      type: 'family',
+      type: 'Family',
       description:
         'Within the charming valley of Everdell, beneath the boughs of towering trees, among meandering streams and mossy hollows, a civilization of forest critters is thriving and expanding. ',
       price: 2015,
+      MSRP: 2215,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/WDbT-w4bNeIwxojLW92I_SO5GSU=/fit-in/246x300/pic3918905.png'
     }),
     Products.create({
       title: 'Spirit Island',
-      type: 'cooperative',
+      type: 'Cooperative',
       description:
         'Spirit Island is a complex and thematic cooperative game about defending your island home from colonizing Invaders. Players are different spirits of the land, each with its own unique elemental powers',
       price: 7899,
+      MSRP: 7899,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/0f6KLNq-ynIWcx3VuZ1QsGAfSRo=/fit-in/246x300/pic3615739.png'
     }),
     Products.create({
       title: 'Scythe',
-      type: 'strategy',
+      type: 'Strategy',
       description:
         'Scythe is an engine-building game set in an alternate-history 1920s period. It is a time of farming and war, broken hearts and rusted gears, innovation and valor. ',
       price: 7899,
+      MSRP: 5000,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/gLHDC5bCrxd1JhefjJ-VxW2zC54=/fit-in/246x300/pic3163924.jpg'
     }),
     Products.create({
       title: 'Spyfall',
-      type: 'party',
+      type: 'Party',
       description:
         'Spyfall is a party game unlike any other, one in which you get to be a spy and try to understand what is going on around you. It is really simple!',
       price: 1499,
+      MSRP: 500,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/8gQ9kYUqU8W5vbE1UnDqPvXHae4=/fit-in/246x300/pic2453926.jpg'
+    }),
+    Products.create({
+      title: 'Stuffed Fables',
+      type: 'Family',
+      description:
+        "Stuffed Fables is an unusual adventure game in which players take on the roles of brave stuffies seeking to save the child they love from a scheming, evil mastermind. Make daring melee attacks, leap across conveyor belts, or even steer a racing wagon down a peril-filled hill. The game delivers a thrilling narrative driven by player choices. Players explore a world of wonder and danger, unlocking curious discoveries. The chapters of Stuffed Fables explore the many milestones of a child's life, creating a memorable tale ideal for families, as well as groups of adults who haven't forgotten their childlike sense of wonder.",
+      price: 9000,
+      MSRP: 9500,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/CeUZnXMiBjRBRxbsMnue4fUprsw=/fit-in/246x300/pic3708878.jpg'
+    }),
+    Products.create({
+      title: 'Terraforming Mars',
+      type: 'Strategy',
+      description:
+        'In the 2400s, mankind begins to terraform the planet Mars. Giant corporations, sponsored by the World Government on Earth, initiate huge projects to raise the temperature, the oxygen level, and the ocean coverage until the environment is habitable. In Terraforming Mars, you play one of those corporations and work together in the terraforming process, but compete for getting victory points that are awarded not only for your contribution to the terraforming, but also for advancing human infrastructure throughout the solar system, and doing other commendable things.',
+      price: 6899,
+      MSRP: 7500,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/bhemoxL7PG1a_79L0D9syPTADSY=/fit-in/246x300/pic3536616.jpg'
+    }),
+    Products.create({
+      title: 'Root',
+      type: 'Strategy',
+      description:
+        'Root is a game of adventure and war in which 2 to 4 players battle for control of a vast wilderness.Root represents the next step in our development of asymmetric design. Like Vast: The Crystal Caverns, each player in Root has unique capabilities and a different victory condition. Now, with the aid of gorgeous, multi-use cards, a truly asymmetric design has never been more accessible.',
+      price: 6969,
+      MSRP: 9500,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/bH4Gk0w5kDGd4MR0DTt8jMI6vo8=/fit-in/246x300/pic4254509.jpg'
+    }),
+    Products.create({
+      title: 'Arkham Horror',
+      type: 'Cooperative',
+      description:
+        'Arkham Horror is a cooperative board game for one to six players who take on the roles of investigators trying to rid the world of eldritch beings known as Ancient Ones. Based on the works of H.P. Lovecraft, players will have to gather clues, defeat terrifying monsters, and find tools and allies if they are to stand any chance of defeating the creatures that dwell just beyond the veil of our reality.',
+      price: 5499,
+      MSRP: 8000,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/u3xLien-i-nOql7ePh8m4FhHbWM=/fit-in/246x300/pic4582151.jpg'
+    }),
+    Products.create({
+      title: 'Champions of Hara',
+      type: 'Cooperative',
+      description:
+        'Champions of Hara is an adventure board game in which 1-4 players race to protect a dying world. Players will contain destructive energy by defeating monsters, closing rifts, and exploring the six different zones within Hara. In order to rise to the challenge, players will need to unlock new abilities and collect powerful items. Each session takes approximately 30 minutes per player.',
+      price: 9499,
+      MSRP: 500,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/VDA4fHXVlKtNuyLlxkJoao3ysow=/fit-in/246x300/pic4453739.png'
+    }),
+    Products.create({
+      title: 'Codenames',
+      type: 'Party',
+      description:
+        "Two rival spymasters know the secret identities of 25 agents. Their teammates know the agents only by their CODENAMES. In Codenames, two teams compete to see who can make contact with all of their agents first. Spymasters give one-word clues that can point to multiple words on the board. Their teammates try to guess words of the right color while avoiding those that belong to the opposing team. And everyone wants to avoid the assassin. Codenames: Win or lose, it's fun to figure out the clues.",
+      price: 5000,
+      MSRP: 5000,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/j3KnNONTvPaOqyY_pwhS9C9s5bk=/fit-in/246x300/pic2582929.jpg'
     })
   ])
   console.log(`seeded ${products.length} products`)
