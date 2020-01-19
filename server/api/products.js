@@ -52,9 +52,5 @@ router.delete('/:itemId', async (req, res, next) => {
     res.json(cartItems)
   } catch (err) {
     next(err)
-    const saleProducts = await Products.findAll()
-    res.send(saleProducts)
-  } catch (error) {
-    next(error)
   }
 })

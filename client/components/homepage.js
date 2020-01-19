@@ -8,13 +8,13 @@ import AddToCart from './addToCart'
 export class HomePage extends React.Component {
   constructor() {
     super()
-    // this.addToCart = this.addToCart.bind(this)
+    this.addToCart = this.addToCart.bind(this)
   }
 
-  // async addToCart(item) {
-  //   const result = await axios.post('/api/cart', item)
-  //   return result.data
-  // }
+  async addToCart(item) {
+    const result = await axios.post('/api/cart', item)
+    return result.data
+  }
 
   componentDidMount() {
     console.log(this.props)
@@ -22,12 +22,21 @@ export class HomePage extends React.Component {
   }
 
   render() {
-    // let products = this.props.products.products
+    console.log(this.props)
+    let products = this.props.products
 
     return (
       <div>
-        <h1>Products:</h1>
-        {/* {products &&
+        <h2>Welcome to Codenames!</h2>
+
+        <p>
+          We're proud to be the best online retailer for board games! No matter
+          what type of game you like, or who you're playing with - you'll be
+          able to find exactly what you're looking for in our store.
+        </p>
+
+        <h1>Current Sale Items:</h1>
+        {products &&
           products.map(product => (
             <div key={product.id}>
               <Link to={`products/${product.id}`}>
@@ -38,7 +47,7 @@ export class HomePage extends React.Component {
 
               <AddToCart product={product} add={this.addToCart} />
             </div>
-          ))} */}
+          ))}
       </div>
     )
   }

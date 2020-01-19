@@ -10,6 +10,7 @@ import {
   Account,
   AllProducts
 } from './components'
+import HomePage from './components/homepage'
 import {me} from './store'
 import Admin from './components/admin/admin'
 
@@ -28,6 +29,7 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/account" component={Account} />
+        <Route path="/home" component={HomePage} />
         {/* <Route path="/signup" component={Signup} /> */}
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/products/" component={AllProducts} />
@@ -80,4 +82,3 @@ Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired
   // isLoggedIn: PropTypes.bool.isRequired
 }
-

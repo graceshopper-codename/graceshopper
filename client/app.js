@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 import {Navbar, AllProducts} from './components'
+import {HomePage} from './components/homepage'
 import Routes from './routes'
 
 const App = () => {
