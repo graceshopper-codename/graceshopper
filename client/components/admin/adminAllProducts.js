@@ -1,7 +1,6 @@
 import React from 'react'
 import {getAllProducts, deleteProduct} from '../../store/products'
 import {connect} from 'react-redux'
-import NewboardGameForm from '../NewBoardGameForm'
 
 export class AdminAllProducts extends React.Component {
   componentDidMount() {
@@ -26,9 +25,6 @@ export class AdminAllProducts extends React.Component {
               </button>
             </div>
           ))}
-        <div>
-          <NewboardGameForm />
-        </div>
       </div>
     )
   }
