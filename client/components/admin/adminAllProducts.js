@@ -11,7 +11,7 @@ export class AdminAllProducts extends React.Component {
     const allProducts = this.props.products.products
     return (
       <div>
-        <h1>Products:</h1>
+        <h3>Products:</h3>
         {allProducts &&
           allProducts.map(product => (
             <div key={product.id}>
