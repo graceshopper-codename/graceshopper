@@ -6,7 +6,7 @@ import {Redirect} from 'react-router-dom'
 let defaultState = {
   name: '',
   address: '',
-  payment: '',
+  payment: 'Credit Card',
   userId: '',
   submitted: true
 }
@@ -17,7 +17,7 @@ class CheckoutForm extends Component {
     this.state = {
       name: '',
       address: '',
-      payment: '',
+      payment: 'Credit Card',
       userId: '',
       submitted: false
     }
@@ -41,6 +41,7 @@ class CheckoutForm extends Component {
   }
 
   render() {
+    let disabled = !(this.state.address && this.state.name)
     return (
       <>
         {this.state.submitted ? <Redirect to="/" /> : null}
@@ -61,13 +62,19 @@ class CheckoutForm extends Component {
               onChange={this.handleChange}
             />
             <label htmlFor="payment"> Payment: </label>
-            <input
+            <select
               name="payment"
               type="text"
               value={this.state.payment}
               onChange={this.handleChange}
-            />
-            <button type="submit">Submit</button>
+            >
+              <option value="Credit Card">Credit Card</option>
+              <option value="Paypal">Paypal</option>
+              <option value="Other">Other</option>
+            </select>
+            <button type="submit" disabled={disabled}>
+              Submit
+            </button>
           </form>
         </div>
       </>
