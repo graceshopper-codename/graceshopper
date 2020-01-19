@@ -23,7 +23,7 @@ export class HomePage extends React.Component {
 
   render() {
     console.log(this.props)
-    let products = this.props.products
+    let products = this.props.products.products
 
     return (
       <div>

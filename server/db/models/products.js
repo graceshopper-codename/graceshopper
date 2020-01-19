@@ -37,9 +37,12 @@ const Products = db.define('products', {
 })
 
 Products.findSales = function() {
+  console.log('IN THE MODEL KJFSHDSLKJFHDSKJFHLKDS', this)
   return this.findAll({
     where: {
-      price: {[Op.lt]: MSRP}
+      price: {
+        [Sequelize.Op.lt]: 1000000
+      }
     }
   })
 }
