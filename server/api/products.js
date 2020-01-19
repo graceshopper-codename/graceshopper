@@ -11,6 +11,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/sale', async (req, res, next) => {
+  try {
+    const saleProducts = await Products.findSales()
+    res.send(saleProducts)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:id', async (req, res, next) => {
   try {
     const productId = req.params.id
@@ -43,5 +52,9 @@ router.delete('/:itemId', async (req, res, next) => {
     res.json(cartItems)
   } catch (err) {
     next(err)
+    const saleProducts = await Products.findAll()
+    res.send(saleProducts)
+  } catch (error) {
+    next(error)
   }
 })

@@ -37,6 +37,7 @@ class Routes extends Component {
         <Route path="/admin" component={AdminView} /> */}
         {/* Routes placed here are only available after logging in
 
+
         {/* {isLoggedIn && (
           <Switch>
             <Route path="/home" component={UserHome} />
@@ -79,3 +80,4 @@ Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired
   // isLoggedIn: PropTypes.bool.isRequired
 }
+
