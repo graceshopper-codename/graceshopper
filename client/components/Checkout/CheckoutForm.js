@@ -42,26 +42,41 @@ class CheckoutForm extends Component {
 
   render() {
     let disabled = !(this.state.address && this.state.name)
+    let nameWarning = this.state.name ? (
+      ' '
+    ) : (
+      <span className="warning">Name is Required</span>
+    )
+    let addressWarning = this.state.address ? (
+      ' '
+    ) : (
+      <span className="warning">Address is Required</span>
+    )
     return (
       <>
         {this.state.submitted ? <Redirect to="/" /> : null}
         <div className="form-container">
           <form className="checkout-form" onSubmit={this.handleSubmit}>
-            <label htmlFor="name"> Name: </label>
+            <label htmlFor="name"> Name: {nameWarning}</label>
+            <br />
             <input
               name="name"
               type="text"
               value={this.state.name}
               onChange={this.handleChange}
             />
-            <label htmlFor="address"> Address: </label>
+            <br />
+            <label htmlFor="address"> Address: {addressWarning} </label>
+            <br />
             <input
               name="address"
               type="text"
               value={this.state.address}
               onChange={this.handleChange}
             />
+            <br />
             <label htmlFor="payment"> Payment: </label>
+            <br />
             <select
               name="payment"
               type="text"
