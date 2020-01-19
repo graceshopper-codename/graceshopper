@@ -15,8 +15,8 @@ router.get('/sale', async (req, res, next) => {
   try {
     const saleProducts = await Products.findSales()
     res.send(saleProducts)
-  } catch (error) {
-    next(error)
+  } catch (err) {
+    next(err)
   }
 })
 
