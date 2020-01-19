@@ -8,10 +8,10 @@ import {
   Checkout,
   AdminView,
   Account,
-  AllProducts
+  AllProducts,
+  HomePage
 } from './components'
 import CompletedOrder from './components/Checkout/completed'
-import HomePage from './components/homepage'
 import {me} from './store'
 import Admin from './components/admin/admin'
 import {About} from './components/footer/about'
@@ -35,7 +35,6 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route path="/account" component={Account} />
-        <Route path="/home" component={HomePage} />
         <Route path="/cart/checkout/complete" component={CompletedOrder} />
         {/* <Route path="/signup" component={Signup} /> */}
         <Route path="/products/:id" component={SingleProduct} />
@@ -49,6 +48,7 @@ class Routes extends Component {
         <Route path="/storeLocations" component={StoreLocations} />
         <Route path="/storeHours" component={StoreHours} />
         <Route path="/returns" component={Returns} />
+        <Route path="/" component={HomePage} />
         {/* Routes placed here are only available after logging in
 
 
