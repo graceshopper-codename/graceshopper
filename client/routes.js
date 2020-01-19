@@ -10,6 +10,7 @@ import {
   Account,
   AllProducts
 } from './components'
+import CompletedOrder from './components/Checkout/completed'
 import HomePage from './components/homepage'
 import {me} from './store'
 import Admin from './components/admin/admin'
@@ -30,6 +31,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/account" component={Account} />
         <Route path="/home" component={HomePage} />
+        <Route path="/cart/checkout/complete" component={CompletedOrder} />
         {/* <Route path="/signup" component={Signup} /> */}
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/products/" component={AllProducts} />

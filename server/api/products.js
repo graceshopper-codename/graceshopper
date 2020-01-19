@@ -14,7 +14,6 @@ router.get('/', async (req, res, next) => {
 router.get('/sale', async (req, res, next) => {
   try {
     const saleProducts = await Products.findSales()
-    console.log('IN THE API', saleProducts)
     res.send(saleProducts)
   } catch (err) {
     next(err)
