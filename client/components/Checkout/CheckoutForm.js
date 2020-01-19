@@ -42,15 +42,11 @@ class CheckoutForm extends Component {
 
   render() {
     let disabled = !(this.state.address && this.state.name)
-    let nameWarning = this.state.name ? (
-      ' '
-    ) : (
-      <span className="warning">Name is Required</span>
-    )
+    let nameWarning = this.state.name ? ' ' : <span className="warning">*</span>
     let addressWarning = this.state.address ? (
       ' '
     ) : (
-      <span className="warning">Address is Required</span>
+      <span className="warning">*</span>
     )
     return (
       <>
@@ -93,6 +89,7 @@ class CheckoutForm extends Component {
               Submit
             </button>
           </form>
+          <h3>* indicates required field</h3>
         </div>
       </>
     )

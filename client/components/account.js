@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Login, Signup} from './auth-form'
 import UserHome from './user-home'
 import {Link} from 'react-router-dom'
+import OrderHistory from './orderHistory'
 
 class Account extends React.Component {
   render() {
@@ -10,7 +11,7 @@ class Account extends React.Component {
       return (
         <div>
           <UserHome />
-          !!! Placeholder Order History goes here !!!
+          <OrderHistory />
           <div>
             {this.props.isAdmin && (
               <Link to="/admin"> Admin Functionalities </Link>
