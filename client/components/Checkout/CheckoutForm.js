@@ -54,7 +54,9 @@ class CheckoutForm extends Component {
     )
     return (
       <>
-        {this.state.submitted ? <Redirect to="/" /> : null}
+        {this.state.submitted ? (
+          <Redirect to="/cart/checkout/complete" />
+        ) : null}
         <div className="form-container">
           <form className="checkout-form" onSubmit={this.handleSubmit}>
             <label htmlFor="name"> Name: {nameWarning}</label>
