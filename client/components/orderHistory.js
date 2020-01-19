@@ -14,11 +14,12 @@ export class OrderHistory extends React.Component {
     return (
       <div>
         <h3>Order History:</h3>
-        <h1>{this.props.user.email}</h1>
         {orders &&
           orders.map(order => (
             <div key={order.productId}>
-              <h3>{order.productId}</h3>
+              <h3>Order Id: {order.orderId}</h3>
+              <h4>Item: {order.productTitle}</h4>
+              <h5>Cost: ${order.purchaseCost / 100}</h5>
             </div>
           ))}
       </div>
