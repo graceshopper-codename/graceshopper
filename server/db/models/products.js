@@ -10,6 +10,11 @@ const Products = db.define('products', {
   },
   type: {
     type: Sequelize.ENUM(
+      'Deckbuilding',
+      'Strategy',
+      'Family',
+      'Party',
+      'Cooperative',
       'deckbuilding',
       'strategy',
       'family',
