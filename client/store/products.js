@@ -38,8 +38,7 @@ export const getSingleProduct = product => {
   }
 }
 
-
-eexport const deleteProduct = product => {
+export const deleteProduct = product => {
   return async dispatch => {
     try {
       const result = await axios.delete(`/api/products/${product}`)
@@ -49,12 +48,12 @@ eexport const deleteProduct = product => {
     }
   }
 }
-        
-export const getSaleProducts = () => {
+
+export const showSales = () => {
   return async dispatch => {
     try {
       const result = await axios.get('/api/products/sale')
-      dispatch(viewProducts(result.data))
+      dispatch(saleProducts(result.data))
     } catch (err) {
       console.error(err)
     }

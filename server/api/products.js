@@ -11,6 +11,15 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/sale', async (req, res, next) => {
+  try {
+    const saleProducts = await Products.findSales()
+    res.send(saleProducts)
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.get('/:id', async (req, res, next) => {
   try {
     const productId = req.params.id
@@ -21,23 +30,11 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.get('/:itemId', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
-    const itemId = req.params.itemId
-    let userId = req.user ? req.user.id : null
-    let order = await Order.findOpenOrderByUser(userId, req.session.id)
-    let cartItems = await Cart.findOneItem(order.id, itemId)
-    res.json(cartItems)
-  } catch (err) {
-    next(err)
-  }
-})
-
-router.delete('/:itemId', async (req, res, next) => {
-  try {
-    let cartItems = await Cart.destroy({
+    let cartItems = await Products.destroy({
       where: {
-        productId: req.params.itemId
+        id: req.params.id
       }
     })
     res.json(cartItems)

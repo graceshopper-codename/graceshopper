@@ -1,13 +1,14 @@
 import React from 'react'
-import {getSaleProducts} from '../store/products'
+import {showSales} from '../store/products'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import AddToCart from './addToCart'
+import OneProduct from './individualprod'
 
 export class HomePage extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.addToCart = this.addToCart.bind(this)
   }
 
@@ -17,16 +18,27 @@ export class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getSaleProducts()
+    console.log(this.props)
+    this.props.showSales()
   }
 
   render() {
+    console.log(this.props)
     let products = this.props.products.products
 
     return (
       <div>
-        <h1>Products:</h1>
-        {products &&
+        <h2>Welcome to Codenames!</h2>
+
+        <p>
+          We're proud to be the best online retailer for board games! No matter
+          what type of game you like, or who you're playing with - you'll be
+          able to find exactly what you're looking for in our store.
+        </p>
+
+        <h1>Current Sale Items:</h1>
+        <OneProduct products={products} addToCart={this.addToCart} />
+        {/* {products &&
           products.map(product => (
             <div key={product.id}>
               <Link to={`products/${product.id}`}>
@@ -37,7 +49,7 @@ export class HomePage extends React.Component {
 
               <AddToCart product={product} add={this.addToCart} />
             </div>
-          ))}
+          ))} */}
       </div>
     )
   }
@@ -48,7 +60,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getSaleProducts: () => dispatch(getSaleProducts())
+  showSales: () => dispatch(showSales())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

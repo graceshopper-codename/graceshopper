@@ -14,33 +14,49 @@ class Cart extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let cartItems = this.props.cart
     return (
       <div>
         <h1>Your Cart:</h1>
         {cartItems ? (
-          <div>
-            <ul>
+          <table className="cart">
+            <thead>
+              <tr>
+                <td>Item</td>
+                <td>Quantity</td>
+                <td>Price</td>
+              </tr>
+            </thead>
+            <tbody>
               {cartItems.map(item => (
-                <div key={item.productId} className="cart-item">
-                  <h1>{item.productId}</h1>
-                  {item.productTitle} {item.quantity} {item.purchaseCost}
-                  <button
-                    type="submit"
-                    onClick={this.props.deletingTheItem(item.productId)}
-                  >
-                    Remove Item
-                  </button>
-                </div>    
-                </div>
+                <tr key={item.productId} className="cart-item">
+                  <td> {item.productTitle} </td>
+                  <td>{item.quantity} </td>
+                  <td>{item.purchaseCost / 100}</td>
+                  <td>
+                    <button
+                      type="submit"
+                      onClick={this.props.deletingTheItem(item.productId)}
+                    >
+                      {' '}
+                      Remove Item
+                    </button>
+                  </td>
+                </tr>
               ))}
-            </ul>
-          </div>
+              <tr />
+            </tbody>
+            <tfoot>
+              <tr>
+                <td>
+                  <Link to="/cart/checkout">Checkout</Link>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         ) : (
           <div>Please add items to cart</div>
         )}
-        <Link to="/cart/checkout">Checkout</Link>
       </div>
     )
   }

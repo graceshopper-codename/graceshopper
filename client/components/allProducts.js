@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import AddToCart from './addToCart'
+import OneProduct from './individualprod'
 
 class AllProducts extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class AllProducts extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.props.getAllProducts()
   }
 
@@ -24,20 +26,24 @@ class AllProducts extends React.Component {
     let products = this.props.products.products
 
     return (
-      <div>
+      <div className="all-products">
         <h1>Products:</h1>
-        {products &&
-          products.map(product => (
-            <div key={product.id}>
-              <Link to={`products/${product.id}`}>
-                <h3>{product.title}</h3>{' '}
-              </Link>
-              <img src={product.imageUrl} />
-              <h4>${product.price}</h4>
-
-              <AddToCart product={product} add={this.addToCart} />
-            </div>
-          ))}
+        <OneProduct products={products} addToCart={this.addToCart} />
+        {/* <div className="products-container">
+          {products &&
+            products.map(product => (
+              <div key={product.id} className="product-container">
+                <Link to={`products/${product.id}`}>
+                  <div className="product-title">{product.title}</div>
+                </Link>
+                <img width={300} height={300} src={product.imageUrl} />
+                <div className="product-price">
+                  ${product.price / 100}
+                  <AddToCart product={product} add={this.addToCart} />
+                </div>
+              </div>
+            ))}
+        </div> */}
       </div>
     )
   }

@@ -36,4 +36,14 @@ const Products = db.define('products', {
   }
 })
 
+Products.findSales = function() {
+  return this.findAll({
+    where: {
+      price: {
+        [Sequelize.Op.lt]: 6000
+      }
+    }
+  })
+}
+
 module.exports = Products
