@@ -1,15 +1,26 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export class Footer extends React.Component {
   render() {
     return (
       <div>
         <div>
-          <h6>About</h6>
-          <h6>Returns</h6>
-          <h6>Contact Us</h6>
-          <h6>Store Hours</h6>
-          <h6>Store Locations</h6>
+          <Link to="/about">
+            <h6>About</h6>
+          </Link>
+          <Link to="/returns">
+            <h6>Returns</h6>
+          </Link>
+          <Link to="/contactUs">
+            <h6>Contact Us</h6>
+          </Link>
+          <Link to="/storeHours">
+            <h6>Store Hours</h6>
+          </Link>
+          <Link to="/storeLocations">
+            <h6>Store Locations</h6>
+          </Link>
         </div>
         <div>
           <img
