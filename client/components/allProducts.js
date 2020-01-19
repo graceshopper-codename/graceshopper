@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import AddToCart from './addToCart'
+import OneProduct from './individualprod'
 
 class AllProducts extends React.Component {
   constructor(props) {
@@ -27,7 +28,8 @@ class AllProducts extends React.Component {
     return (
       <div className="all-products">
         <h1>Products:</h1>
-        <div className="products-container">
+        <OneProduct products={products} addToCart={this.addToCart} />
+        {/* <div className="products-container">
           {products &&
             products.map(product => (
               <div key={product.id} className="product-container">
@@ -41,7 +43,7 @@ class AllProducts extends React.Component {
                 </div>
               </div>
             ))}
-        </div>
+        </div> */}
       </div>
     )
   }
