@@ -14,11 +14,6 @@ import CompletedOrder from './components/Checkout/completed'
 import HomePage from './components/homepage'
 import {me} from './store'
 import Admin from './components/admin/admin'
-import {About} from './components/footer/about'
-import {ContactUs} from './components/footer/contactUs'
-import {StoreHours} from './components/footer/storeHours'
-import {StoreLocations} from './components/footer/storeLocations'
-import {Returns} from './components/footer/returns'
 
 /**
  * COMPONENT
@@ -44,11 +39,6 @@ class Routes extends Component {
         <Route path="/cart" component={Cart} />
         <Route path="/users" component={Admin} />
         <Route path="/admin" component={AdminView} /> */}
-        <Route path="/about" component={About} />
-        <Route path="/contactUs" component={ContactUs} />
-        <Route path="/storeLocations" component={StoreLocations} />
-        <Route path="/storeHours" component={StoreHours} />
-        <Route path="/returns" component={Returns} />
         {/* Routes placed here are only available after logging in
 
 
