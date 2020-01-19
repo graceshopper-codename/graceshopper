@@ -41,7 +41,7 @@ export const getSingleProduct = product => {
 export const deleteProduct = product => {
   return async dispatch => {
     try {
-      const result = await axios.delete(`/api/products/${product}`)
+      await axios.delete(`/api/products/${product}`)
       dispatch(deletingProduct(product))
     } catch (err) {
       console.error(err)

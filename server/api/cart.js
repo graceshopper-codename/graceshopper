@@ -72,6 +72,27 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+router.get('/history', async (req, res, next) => {
+  try {
+    let userId = req.user ? req.user.id : null
+    let orders = await Order.findAll({
+      where: {
+        userId: userId,
+        purchased: true
+      }
+    })
+    const allItemsId = orders.map(order => order.id)
+    const stuff = await Cart.findAll({
+      where: {
+        orderId: allItemsId
+      }
+    })
+
+    res.send(stuff)
+  } catch (err) {
+    next(err)
+  }
+})
 
 router.get('/:itemId', async (req, res, next) => {
   try {
