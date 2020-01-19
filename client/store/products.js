@@ -4,13 +4,16 @@ import axios from 'axios'
 
 const ALL_PRODUCTS = 'ALL_PRODUCTS'
 const SINGLE_PRODUCT = 'SINGLE_PRODUCT'
+const ADD_PRODUCT = 'ADD_PRODUCT'
 const DELETE_PRODUCT = 'DELETE_PRODUCT'
 const SALE_PRODUCTS = 'SALE_PRODUCTS'
+
 
 //Action Creators
 
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
 const singleProduct = product => ({type: SINGLE_PRODUCT, product})
+const addNewProduct = product => ({type: ADD_PRODUCT, product})
 const deletingProduct = productId => ({type: DELETE_PRODUCT, productId})
 const saleProducts = products => ({type: SALE_PRODUCTS, products})
 
@@ -37,6 +40,13 @@ export const getSingleProduct = product => {
     }
   }
 }
+
+
+export const addProduct = product => {
+  return async dispatch => {
+    try {
+      const result = await axios.post('/api/products', product)
+      dispatch(addNewProduct(result.data))
 
 export const deleteProduct = product => {
   return async dispatch => {
@@ -68,6 +78,9 @@ const manageProducts = (state = [], action) => {
       return action
     case SINGLE_PRODUCT:
       return action
+    case ADD_PRODUCT:
+      state.products.push(action.product)
+      return {...state}
     case DELETE_PRODUCT:
       return {
         ...state,
