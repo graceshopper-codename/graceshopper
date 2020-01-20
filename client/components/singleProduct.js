@@ -5,16 +5,6 @@ import AddToCart from './addToCart'
 import {Link} from 'react-router-dom'
 
 export class SingleProduct extends React.Component {
-  constructor(props) {
-    super(props)
-    this.addToCart = this.addToCart.bind(this)
-  }
-
-  async addToCart(item) {
-    const result = await axios.post('/api/cart', item)
-    return result.data
-  }
-
   componentDidMount() {
     const id = this.props.match.params.id
     this.props.getSingleProduct(id)
@@ -30,6 +20,7 @@ export class SingleProduct extends React.Component {
             <img src={product.imageUrl} />
             <h4>{product.description}</h4>
 
+
             <h3>${product.price}</h3>
             <h4>Tag: {product.type}</h4>
           </div>
@@ -37,6 +28,7 @@ export class SingleProduct extends React.Component {
         <AddToCart product={product} add={this.addToCart} />
         <p />
         <Link to="/products">Return to all products</Link>
+
       </div>
     )
   }

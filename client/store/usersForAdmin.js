@@ -1,11 +1,14 @@
 import axios from 'axios'
 
+// ACTION TYPES
 const GET_ALL_USERS = 'GET_ALL_USERS'
 const DELETE_USER = 'DELETE_USER'
 
+// ACTION CREATORS
 const getAllUsers = users => ({type: GET_ALL_USERS, users})
 const deletingUser = (users, userId) => ({type: DELETE_USER, users, userId})
 
+// THUNK CREATORS
 export const allUsers = () => {
   return async dispatch => {
     try {
@@ -27,6 +30,8 @@ export const deleteUser = user => {
     }
   }
 }
+
+// REDUCER
 const manageUsersForAdmin = (state = [], action) => {
   switch (action.type) {
     case GET_ALL_USERS:

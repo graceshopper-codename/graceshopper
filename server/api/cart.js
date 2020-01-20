@@ -24,9 +24,7 @@ router.put('/checkout', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    let qty = parseInt(req.body.qty, 10)
-    let productId = parseInt(req.body.product_id, 10)
-    let prod = await Products.findByPk(productId)
+    let prod = req.body.product
     let userId = req.user ? req.user.id : null
     let [order, orderCreated] = await Order.findOrCreateOpenOrderByUser(
       userId,
@@ -40,17 +38,33 @@ router.post('/', async (req, res, next) => {
       defaults: {
         purchaseCost: prod.price,
         productTitle: prod.title,
-        quantity: qty,
+        quantity: req.body.quantity,
         productId: prod.id,
         orderId: order.id
       }
     })
-
-    let updatedCart
     if (!cartCreated) {
-      updatedCart = await cart.update({quantity: cart.quantity + 1})
+      cart = await cart.update({quantity: cart.quantity + 1})
     }
-    res.status(200).send(updatedCart)
+    let cartItems = await Cart.findByOrderId(order.id)
+    res.json(cartItems)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/', async (req, res, next) => {
+  try {
+    let item = req.body.item
+    let cartItem = await Cart.findOne({
+      where: {
+        productId: item.productId,
+        orderId: item.orderId
+      }
+    })
+    let updatedCartItem = await cartItem.update({quantity: req.body.quantity})
+    let cartItems = await Cart.findByOrderId(item.orderId)
+    res.json(cartItems)
   } catch (err) {
     next(err)
   }
@@ -59,7 +73,6 @@ router.post('/', async (req, res, next) => {
 // get method to cart will be called
 router.get('/', async (req, res, next) => {
   try {
-    // let orderId = Order.find(where userId or sessionId !purchased)
     let userId = req.user ? req.user.id : null
     let order = await Order.findOpenOrderByUser(userId, req.session.id)
     if (order) {
@@ -68,6 +81,27 @@ router.get('/', async (req, res, next) => {
     } else {
       res.json(order)
     }
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.get('/history', async (req, res, next) => {
+  try {
+    let userId = req.user ? req.user.id : null
+    let orders = await Order.findAll({
+      where: {
+        userId: userId,
+        purchased: true
+      }
+    })
+    const allItemsId = orders.map(order => order.id)
+    const history = await Cart.findAll({
+      where: {
+        orderId: allItemsId
+      }
+    })
+    res.send(history)
   } catch (err) {
     next(err)
   }
@@ -92,8 +126,6 @@ router.delete('/:itemId', async (req, res, next) => {
         productId: req.params.itemId
       }
     })
-    console.log('cartitems', cartItems)
-    console.log('***productid', req.params.itemId)
     res.json(cartItems)
   } catch (err) {
     next(err)
