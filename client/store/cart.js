@@ -2,13 +2,17 @@ import axios from 'axios'
 
 //Action Types
 const GET_CART = 'GET_CART'
+const ADD_TO_CART = 'ADD_TO_CART'
 const DELETE_ITEM = 'DELETE_ITEM'
 const ORDER_HISTORY = 'ORDER_HISTORY'
+const UPDATE_CART = 'UPDATE_CART'
 
 //Action Creators
 const viewCart = items => ({type: GET_CART, items})
 const deleteItem = items => ({type: DELETE_ITEM, items})
 const completedOrders = items => ({type: ORDER_HISTORY, items})
+const addToCart = items => ({type: ADD_TO_CART, items})
+const updateCart = items => ({type: UPDATE_CART, items})
 
 //Thunk Creator
 export const getCart = () => {
@@ -45,6 +49,29 @@ export const deletingTheItem = itemId => {
   }
 }
 
+export const addingToCart = (product, quantity) => {
+  return async dispatch => {
+    try {
+      await axios.post('/api/cart', {product, quantity})
+      const result = await axios.get('/api/cart')
+      dispatch(addToCart(result.data))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+export const updatingCart = (item, quantity) => {
+  return async dispatch => {
+    try {
+      await axios.put('/api/cart', {item, quantity})
+      const result = await axios.get('/api/cart')
+      dispatch(updateCart(result.data))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 //Reducer
 const manageCart = (state = [], action) => {
   switch (action.type) {
@@ -53,6 +80,10 @@ const manageCart = (state = [], action) => {
     case DELETE_ITEM:
       return action.items
     case ORDER_HISTORY:
+      return action.items
+    case ADD_TO_CART:
+      return action.items
+    case UPDATE_CART:
       return action.items
     default:
       return state

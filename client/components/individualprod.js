@@ -4,7 +4,6 @@ import AddToCart from './addToCart'
 
 const OneProduct = props => {
   let products = props.products
-  let addToCart = props.addToCart
   return (
     <div className="products-container">
       {products &&
@@ -16,7 +15,7 @@ const OneProduct = props => {
             <img width={300} height={300} src={product.imageUrl} />
             <div className="product-price">
               ${product.price / 100}
-              <AddToCart product={product} add={addToCart} />
+              <AddToCart product={product} quantity={1} />
             </div>
           </div>
         ))}

@@ -4,16 +4,6 @@ import {connect} from 'react-redux'
 import AddToCart from './addToCart'
 
 export class SingleProduct extends React.Component {
-  constructor(props) {
-    super(props)
-    this.addToCart = this.addToCart.bind(this)
-  }
-
-  async addToCart(item) {
-    const result = await axios.post('/api/cart', item)
-    return result.data
-  }
-
   componentDidMount() {
     const id = this.props.match.params.id
     this.props.getSingleProduct(id)
@@ -29,10 +19,10 @@ export class SingleProduct extends React.Component {
             <img src={product.imageUrl} />
             <h4>{product.description}</h4>
             <h4>{product.type}</h4>
-            <h4>${product.price}</h4>
+            <h4>${product.price / 100}</h4>
           </div>
         )}
-        <AddToCart product={product} add={this.addToCart} />
+        <AddToCart product={product} />
       </div>
     )
   }
