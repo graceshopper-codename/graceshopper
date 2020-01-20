@@ -1,10 +1,10 @@
 import React from 'react'
-import {getSingleProduct} from '../store/products'
+import {findProductsByTag} from '../store/products'
 import {connect} from 'react-redux'
 import AddToCart from './addToCart'
 import {Link} from 'react-router-dom'
 
-export class SingleProduct extends React.Component {
+export class TaggedProducts extends React.Component {
   constructor(props) {
     super(props)
     this.addToCart = this.addToCart.bind(this)
@@ -16,12 +16,14 @@ export class SingleProduct extends React.Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id
-    this.props.getSingleProduct(id)
+    const tag = this.props.match.params.type
+    this.props.findProductsByTag(tag)
   }
 
   render() {
     const product = this.props.products.product
+    const tag = this.props.products.product.type
+
     return (
       <div>
         {product && (
@@ -30,12 +32,12 @@ export class SingleProduct extends React.Component {
             <img src={product.imageUrl} />
             <h4>{product.description}</h4>
 
-            <h3>${product.price}</h3>
-            <h4>Tag: {product.type}</h4>
+            <p> Tag: {product.type}</p>
+            <h3>${product.price / 100}</h3>
           </div>
         )}
         <AddToCart product={product} add={this.addToCart} />
-        <p />
+        <p> </p>
         <Link to="/products">Return to all products</Link>
       </div>
     )
@@ -47,7 +49,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getSingleProduct: product => dispatch(getSingleProduct(product))
+  findProductsByTag: tag => dispatch(findProductsByTag(tag))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(TaggedProducts)
