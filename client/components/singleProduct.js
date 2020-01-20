@@ -12,6 +12,7 @@ export class SingleProduct extends React.Component {
 
   render() {
     const product = this.props.products.product
+
     return (
       <div>
         {product && (
@@ -20,15 +21,17 @@ export class SingleProduct extends React.Component {
             <img src={product.imageUrl} />
             <h4>{product.description}</h4>
 
-
             <h3>${product.price}</h3>
-            <h4>Tag: {product.type}</h4>
+            <p>
+              {' '}
+              Tag:{' '}
+              <Link to={`/products/tag/${product.type}`}>{product.type}</Link>
+            </p>
           </div>
         )}
         <AddToCart product={product} add={this.addToCart} />
         <p />
         <Link to="/products">Return to all products</Link>
-
       </div>
     )
   }
