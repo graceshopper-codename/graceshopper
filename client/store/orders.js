@@ -10,7 +10,6 @@ const completeOrder = order => ({type: COMPLETE_ORDER, order})
 export const purchase = order => {
   return async dispatch => {
     try {
-      console.log('ORDER', order)
       const {data} = await axios.put('/api/cart/checkout', order)
       dispatch(completeOrder(data))
     } catch (err) {

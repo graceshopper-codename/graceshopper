@@ -43,12 +43,27 @@ router.post('/', async (req, res, next) => {
         orderId: order.id
       }
     })
-    console.log('***CART', cart)
-
     if (!cartCreated) {
       cart = await cart.update({quantity: cart.quantity + 1})
     }
     let cartItems = await Cart.findByOrderId(order.id)
+    res.json(cartItems)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/', async (req, res, next) => {
+  try {
+    let item = req.body.item
+    let cartItem = await Cart.findOne({
+      where: {
+        productId: item.productId,
+        orderId: item.orderId
+      }
+    })
+    let updatedCartItem = await cartItem.update({quantity: req.body.quantity})
+    let cartItems = await Cart.findByOrderId(item.orderId)
     res.json(cartItems)
   } catch (err) {
     next(err)

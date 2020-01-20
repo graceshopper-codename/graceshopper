@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getCart, deletingTheItem} from '../store/cart'
+import CartQuantityForm from './cartQuantityForm'
 
 class Cart extends React.Component {
   constructor() {
@@ -15,6 +16,10 @@ class Cart extends React.Component {
 
   render() {
     let cartItems = this.props.cart
+    let total = cartItems.reduce(
+      (acc, item) => acc + item.quantity * item.purchaseCost,
+      0
+    )
     return (
       <div>
         <h1>Your Cart:</h1>
@@ -23,7 +28,7 @@ class Cart extends React.Component {
             <thead>
               <tr>
                 <td>Item</td>
-                <td>Quantity</td>
+                <td colSpan={2}>Quantity</td>
                 <td>Price</td>
               </tr>
             </thead>
@@ -31,7 +36,11 @@ class Cart extends React.Component {
               {cartItems.map(item => (
                 <tr key={item.productId} className="cart-item">
                   <td> {item.productTitle} </td>
-                  <td>{item.quantity} </td>
+                  <td> {item.quantity}</td>
+                  <td>
+                    {' '}
+                    <CartQuantityForm item={item} />
+                  </td>
                   <td>{item.purchaseCost / 100}</td>
                   <td>
                     <button
@@ -48,9 +57,10 @@ class Cart extends React.Component {
             </tbody>
             <tfoot>
               <tr>
-                <td>
+                <td colSpan={3}>
                   <Link to="/cart/checkout">Checkout</Link>
                 </td>
+                <td>${total / 100}</td>
               </tr>
             </tfoot>
           </table>
