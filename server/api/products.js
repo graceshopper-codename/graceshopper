@@ -30,6 +30,16 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+router.get('/:tag', async (req, res, next) => {
+  try {
+    const tag = req.params.tag
+    const tagProducts = await Products.findByTag(tag)
+    res.send(tagProducts)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.delete('/:id', async (req, res, next) => {
   try {
     let cartItems = await Products.destroy({

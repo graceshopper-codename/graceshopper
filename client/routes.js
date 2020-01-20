@@ -50,8 +50,6 @@ class Routes extends Component {
         <Route path="/returns" component={Returns} />
         <Route path="/" component={HomePage} />
         {/* Routes placed here are only available after logging in
-
-
         {/* {isLoggedIn && (
           <Switch>
             <Route path="/home" component={UserHome} />
