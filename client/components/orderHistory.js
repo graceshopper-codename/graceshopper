@@ -1,25 +1,30 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {orderHistory} from '../store/cart'
+import {sort} from './sortOrders'
 
 export class OrderHistory extends React.Component {
   componentDidMount() {
     this.props.orderHistory()
   }
   render() {
-    const orders = this.props.cart
-    console.log(orders)
+    const allOrders = this.props.cart
+    const result = sort(allOrders)
+
     return (
       <div>
         <h3>Order History:</h3>
-        {orders &&
-          orders.map(order => (
-            <div key={order.productId}>
-              <h3>Order Id: {order.orderId}</h3>
-              <h4>Item: {order.productTitle}</h4>
-              <h5>Cost: ${order.purchaseCost / 100}</h5>
-            </div>
-          ))}
+        {Object.keys(result).map((orders, orderId) => (
+          <div key={orders}>
+            <h3>Order Id: {orderId}</h3>
+            {result[orders].map(order => (
+              <div key={order}>
+                <h4>Item: {order.productTitle}</h4>
+                <h5>Cost: ${order.purchaseCost / 100}</h5>
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     )
   }
