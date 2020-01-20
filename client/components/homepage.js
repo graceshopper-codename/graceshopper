@@ -1,20 +1,9 @@
 import React from 'react'
 import {showSales} from '../store/products'
 import {connect} from 'react-redux'
-import axios from 'axios'
 import OneProduct from './individualprod'
 
 export class HomePage extends React.Component {
-  constructor() {
-    super()
-    this.addToCart = this.addToCart.bind(this)
-  }
-
-  async addToCart(item) {
-    const result = await axios.post('/api/cart', item)
-    return result.data
-  }
-
   componentDidMount() {
     this.props.showSales()
   }
@@ -31,7 +20,7 @@ export class HomePage extends React.Component {
           able to find exactly what you're looking for in our store.
         </p>
         <h1>Current Sale Items:</h1>
-        <OneProduct products={products} addToCart={this.addToCart} />
+        <OneProduct products={products} />
       </div>
     )
   }
