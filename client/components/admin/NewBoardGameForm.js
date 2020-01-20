@@ -83,10 +83,8 @@ class NewBoardGameForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addProduct: newGame => dispatch(addProduct(newGame))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  addProduct: newGame => dispatch(addProduct(newGame))
+})
 
 export default connect(null, mapDispatchToProps)(NewBoardGameForm)

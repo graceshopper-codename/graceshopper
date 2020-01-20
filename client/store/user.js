@@ -2,21 +2,17 @@ import axios from 'axios'
 import history from '../history'
 
 // ACTION TYPES
-
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 
 // INITIAL STATE
-
 const defaultUser = {}
 
 // ACTION CREATORS
-
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 
 // THUNK CREATORS
-
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
@@ -33,7 +29,6 @@ export const auth = (email, password, method) => async dispatch => {
   } catch (authError) {
     return dispatch(getUser({error: authError}))
   }
-
   try {
     dispatch(getUser(res.data))
     history.push('/home')
@@ -53,16 +48,12 @@ export const logout = () => async dispatch => {
 }
 
 // REDUCER
-
 const manageUsers = (state = defaultUser, action) => {
   switch (action.type) {
     case GET_USER:
       return action.user
     case REMOVE_USER:
       return defaultUser
-    // case GET_ALL_USERS:
-    //   return action
-
     default:
       return state
   }

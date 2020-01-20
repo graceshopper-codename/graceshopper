@@ -1,19 +1,16 @@
 import axios from 'axios'
 
 //Action Types
-
 const GET_CART = 'GET_CART'
 const DELETE_ITEM = 'DELETE_ITEM'
 const ORDER_HISTORY = 'ORDER_HISTORY'
 
 //Action Creators
-
 const viewCart = items => ({type: GET_CART, items})
 const deleteItem = items => ({type: DELETE_ITEM, items})
 const completedOrders = items => ({type: ORDER_HISTORY, items})
 
 //Thunk Creator
-
 export const getCart = () => {
   return async dispatch => {
     try {
@@ -24,6 +21,7 @@ export const getCart = () => {
     }
   }
 }
+
 export const orderHistory = () => {
   return async dispatch => {
     try {

@@ -59,7 +59,6 @@ router.post('/', async (req, res, next) => {
 // get method to cart will be called
 router.get('/', async (req, res, next) => {
   try {
-    // let orderId = Order.find(where userId or sessionId !purchased)
     let userId = req.user ? req.user.id : null
     let order = await Order.findOpenOrderByUser(userId, req.session.id)
     if (order) {
@@ -72,6 +71,7 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
 router.get('/history', async (req, res, next) => {
   try {
     let userId = req.user ? req.user.id : null
@@ -82,13 +82,12 @@ router.get('/history', async (req, res, next) => {
       }
     })
     const allItemsId = orders.map(order => order.id)
-    const stuff = await Cart.findAll({
+    const history = await Cart.findAll({
       where: {
         orderId: allItemsId
       }
     })
-
-    res.send(stuff)
+    res.send(history)
   } catch (err) {
     next(err)
   }
@@ -113,8 +112,6 @@ router.delete('/:itemId', async (req, res, next) => {
         productId: req.params.itemId
       }
     })
-    console.log('cartitems', cartItems)
-    console.log('***productid', req.params.itemId)
     res.json(cartItems)
   } catch (err) {
     next(err)

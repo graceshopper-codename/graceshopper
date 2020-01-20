@@ -96,10 +96,8 @@ class CheckoutForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    purchase: order => dispatch(purchase(order))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  purchase: order => dispatch(purchase(order))
+})
 
 export default connect(null, mapDispatchToProps)(CheckoutForm)

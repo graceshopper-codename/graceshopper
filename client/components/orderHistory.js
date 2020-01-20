@@ -1,11 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {me} from '../store/user'
 import {orderHistory} from '../store/cart'
 
 export class OrderHistory extends React.Component {
   componentDidMount() {
-    // this.props.me()
     this.props.orderHistory()
   }
   render() {
@@ -28,12 +26,10 @@ export class OrderHistory extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  user: state.user,
   cart: state.cart
 })
 
 const mapDispatchToProps = dispatch => ({
-  // me: () => dispatch(me()),
   orderHistory: () => dispatch(orderHistory())
 })
 
