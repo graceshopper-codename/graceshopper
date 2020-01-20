@@ -1,15 +1,12 @@
 import axios from 'axios'
 
 //Action Types
-
 const COMPLETE_ORDER = 'COMPLETE_ORDER'
 
 //Action Creators
-
 const completeOrder = order => ({type: COMPLETE_ORDER, order})
 
 //Thunk Creators
-
 export const purchase = order => {
   return async dispatch => {
     try {
@@ -23,12 +20,10 @@ export const purchase = order => {
 }
 
 //Reducers
-
 const manageOrders = (state = [], action) => {
   switch (action.type) {
     case COMPLETE_ORDER:
       return action.order
-
     default:
       return state
   }

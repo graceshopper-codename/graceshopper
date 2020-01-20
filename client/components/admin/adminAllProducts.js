@@ -17,7 +17,7 @@ export class AdminAllProducts extends React.Component {
           allProducts.map(product => (
             <div key={product.id}>
               <img src={product.imageUrl} />
-              <h4>${product.price}</h4>
+              <h4>${product.price / 100}</h4>
               <button
                 type="submit"
                 onClick={this.props.deleteProduct(product.id)}
