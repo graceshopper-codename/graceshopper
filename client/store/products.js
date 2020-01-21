@@ -14,9 +14,10 @@ const viewProducts = products => ({type: ALL_PRODUCTS, products})
 const singleProduct = product => ({type: SINGLE_PRODUCT, product})
 const deletingProduct = productId => ({type: DELETE_PRODUCT, productId})
 const saleProducts = products => ({type: SALE_PRODUCTS, products})
-const tagProducts = productTag => ({type: Tag_PRODUCTS, productTag})
+const tagProducts = productTag => ({type: TAG_PRODUCTS, productTag})
 const addNewProduct = product => ({type: ADD_PRODUCT, product})
 const updatingProduct = products => ({type: UPDATE_PRODUCT, products})
+
 
 //Thunk Creator
 export const getAllProducts = () => {
@@ -44,8 +45,8 @@ export const getSingleProduct = product => {
 export const getTagProduct = product => {
   return async dispatch => {
     try {
-      console.log('IN THE THUNK')
-      const result = await axios.get(`/api/products/tag/${product}`)
+      console.log('IN THE THUNK', productTag)
+      const result = await axios.get(`/api/products/tag/${productTag}`)
       dispatch(tagProducts(result.data))
     } catch (err) {
       console.error(err)
@@ -85,6 +86,7 @@ export const addProduct = product => {
     }
   }
 }
+
 
 export const updateProduct = (update, product) => {
   return async dispatch => {

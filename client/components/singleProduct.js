@@ -22,11 +22,10 @@ export class SingleProduct extends React.Component {
             <h4>{product.description}</h4>
 
             <h3>${product.price}</h3>
-            <p>
-              {' '}
+            <h4>
               Tag:{' '}
               <Link to={`/products/tag/${product.type}`}>{product.type}</Link>
-            </p>
+            </h4>
           </div>
         )}
         <AddToCart product={product} add={this.addToCart} />

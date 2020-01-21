@@ -31,7 +31,6 @@ router.get('/:id', async (req, res, next) => {
 })
 
 router.get('/tag/:productTag', async (req, res, next) => {
-  console.log("WE'RE IN API", req.params.productTag)
   try {
     console.log("WE'RE IN API TRY", req.params.productTag)
     const tag = req.params.productTag
