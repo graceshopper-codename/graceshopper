@@ -14,7 +14,6 @@ import {
 import TaggedProducts from './components/productsByTag'
 import CompletedOrder from './components/Checkout/completed'
 import {me} from './store'
-import Admin from './components/admin/admin'
 import {About} from './components/footer/about'
 import {ContactUs} from './components/footer/contactUs'
 import {StoreHours} from './components/footer/storeHours'
@@ -45,7 +44,6 @@ class Routes extends Component {
         <Route path="/products/" component={AllProducts} />
         <Route path="/cart/checkout" component={Checkout} />
         <Route path="/cart" component={Cart} />
-        <Route path="/users" component={Admin} />
         <Route path="/admin" component={AdminView} /> */}
         <Route path="/about" component={About} />
         <Route path="/contactUs" component={ContactUs} />

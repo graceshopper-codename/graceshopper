@@ -16,13 +16,6 @@ export class UpdateProduct extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  // componentDidUpdate(prevProps) {
-  //   // console.log(prevProps)
-  //   if (this.props.state !== prevProps.state) {
-  //     this.setState(this.props.state);
-  //   }
-  // }
-
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -55,12 +48,18 @@ export class UpdateProduct extends React.Component {
               onChange={this.handleChange}
             />
             <label htmlFor="type"> Type: </label>
-            <input
+            <select
               name="type"
               type="text"
               value={this.state.type}
               onChange={this.handleChange}
-            />
+            >
+              <option value="Deckbuilding">Deckbuilding</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Family">Family</option>
+              <option value="Party">Party</option>
+              <option value="Cooperative">Cooperative</option>
+            </select>
             <label htmlFor="description"> Description: </label>
             <input
               name="description"
