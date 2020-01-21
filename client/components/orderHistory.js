@@ -9,7 +9,10 @@ export class OrderHistory extends React.Component {
   }
   render() {
     const allOrders = this.props.cart
-    if (allOrders) {
+    console.log(allOrders)
+    if (allOrders === null || allOrders.length === 0) {
+      return <h3>No order history</h3>
+    } else {
       const result = sort(allOrders)
       return (
         <div>
@@ -27,8 +30,6 @@ export class OrderHistory extends React.Component {
           ))}
         </div>
       )
-    } else {
-      return <div>No orders</div>
     }
   }
 }

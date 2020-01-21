@@ -2,8 +2,8 @@ import React from 'react'
 import {getAllProducts, deleteProduct} from '../../store/products'
 import {connect} from 'react-redux'
 import NewBoardGameForm from './NewBoardGameForm'
-import UpdateProduct from './updateProduct'
 import {Link} from 'react-router-dom'
+import UpdateProduct from './updateProduct'
 
 export class AdminAllProducts extends React.Component {
   componentDidMount() {
@@ -12,6 +12,7 @@ export class AdminAllProducts extends React.Component {
 
   render() {
     const allProducts = this.props.products.products
+    console.log(allProducts)
     return (
       <div>
         <h3>Products:</h3>
@@ -26,7 +27,8 @@ export class AdminAllProducts extends React.Component {
               >
                 Remove Product
               </button>
-              <Link to={`/products/update/${product.id}`}>Update Product</Link>
+              <UpdateProduct id={product.id} />
+              {/* <Link to={`/products/update/${product.id}`}>Update Product</Link> */}
             </div>
           ))}
         <div>

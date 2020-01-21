@@ -24,7 +24,7 @@ export class UpdateProduct extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.updateProduct(this.state, this.props.match.params.id)
+    this.props.updateProduct(this.state, this.props.id)
 
     this.setState({
       title: '',
@@ -36,6 +36,7 @@ export class UpdateProduct extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="form-container">
@@ -89,8 +90,12 @@ export class UpdateProduct extends React.Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => ({
+  id: ownProps.id
+})
+
 const mapDispatchToProp = dispatch => ({
   updateProduct: (item, itemId) => dispatch(updateProduct(item, itemId))
 })
 
-export default connect(null, mapDispatchToProp)(UpdateProduct)
+export default connect(mapStateToProps, mapDispatchToProp)(UpdateProduct)
