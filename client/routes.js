@@ -11,6 +11,7 @@ import {
   AllProducts,
   HomePage
 } from './components'
+import TaggedProducts from './components/productsByTag'
 import CompletedOrder from './components/Checkout/completed'
 import {me} from './store'
 import Admin from './components/admin/admin'
@@ -37,6 +38,7 @@ class Routes extends Component {
         <Route path="/account" component={Account} />
         <Route path="/cart/checkout/complete" component={CompletedOrder} />
         {/* <Route path="/signup" component={Signup} /> */}
+        <Route path="/products/tag/:productTag" component={TaggedProducts} />
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/products/" component={AllProducts} />
         <Route path="/cart/checkout" component={Checkout} />

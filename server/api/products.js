@@ -30,9 +30,10 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.get('/:tag', async (req, res, next) => {
+router.get('/tag/:productTag', async (req, res, next) => {
   try {
-    const tag = req.params.tag
+    console.log('IN THE API', req.params.productTag)
+    const tag = req.params.productTag
     const tagProducts = await Products.findByTag(tag)
     res.send(tagProducts)
   } catch (error) {
