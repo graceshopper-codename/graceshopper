@@ -30,6 +30,17 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+router.get('/tag/:productTag', async (req, res, next) => {
+  try {
+    console.log("WE'RE IN API TRY", req.params.productTag)
+    const tag = req.params.productTag
+    const tagProducts = await Products.findByTag(tag)
+    res.send(tagProducts)
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.delete('/:id', async (req, res, next) => {
   try {
     let cartItems = await Products.destroy({
@@ -41,4 +52,54 @@ router.delete('/:id', async (req, res, next) => {
   } catch (err) {
     next(err)
   }
+})
+
+// router.post('/', async (req, res, next) => {
+//   try {
+//     let {title, type, description, price, imageUrl} = req.body
+//     const newProduct = await Products.create(
+//       title,
+//       type,
+//       description,
+//       price,
+//       imageUrl
+//     )
+//     res.send(newProduct)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
+
+//was working
+//  router.post('/', async (req, res, next) => {
+//   Products.create(req.body)
+//     .then(product => res.json(product))
+//     .catch(next)
+// })
+
+router.post('/', async (req, res, next) => {
+  try {
+    const product = await Products.create(req.body)
+    res.status(201).send(product)
+  } catch (error) {
+    next(error)
+  }
+})
+
+// router.put('/update/:id', async (req, res, next) => {
+//   try {
+//     const id = req.params.id
+//     const product = await Products.findByPk(id)
+//     const updated = await product.update(req.body)
+//     res.send(updated)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
+router.put('/:id', (req, res, next) => {
+  Products.findById(req.params.id)
+    .then(todo => todo.update(req.body))
+    .then(todo => res.json(todo))
+    .catch(next)
 })

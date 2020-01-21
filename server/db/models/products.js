@@ -1,4 +1,3 @@
-const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
@@ -10,6 +9,11 @@ const Products = db.define('products', {
   },
   type: {
     type: Sequelize.ENUM(
+      'Deckbuilding',
+      'Strategy',
+      'Family',
+      'Party',
+      'Cooperative',
       'deckbuilding',
       'strategy',
       'family',
@@ -32,6 +36,8 @@ const Products = db.define('products', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
+    defaultValue:
+      'https://cf.geekdo-images.com/itemrep/img/U28cezkt4voh5iEceBV8kKM5n64=/fit-in/246x300/pic4781085.jpg',
     allowNull: false
   }
 })
@@ -42,6 +48,14 @@ Products.findSales = function() {
       price: {
         [Sequelize.Op.lt]: 6000
       }
+    }
+  })
+}
+
+Products.findByTag = function(tag) {
+  return this.findAll({
+    where: {
+      type: tag
     }
   })
 }

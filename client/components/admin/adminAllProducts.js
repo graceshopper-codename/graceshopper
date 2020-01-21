@@ -1,6 +1,9 @@
 import React from 'react'
 import {getAllProducts, deleteProduct} from '../../store/products'
 import {connect} from 'react-redux'
+import NewBoardGameForm from './NewBoardGameForm'
+import UpdateProduct from './updateProduct'
+import {Link} from 'react-router-dom'
 
 export class AdminAllProducts extends React.Component {
   componentDidMount() {
@@ -16,15 +19,19 @@ export class AdminAllProducts extends React.Component {
           allProducts.map(product => (
             <div key={product.id}>
               <img src={product.imageUrl} />
-              <h4>${product.price}</h4>
+              <h4>${product.price / 100}</h4>
               <button
                 type="submit"
                 onClick={this.props.deleteProduct(product.id)}
               >
                 Remove Product
               </button>
+              <Link to={`/products/update/${product.id}`}>Update Product</Link>
             </div>
           ))}
+        <div>
+          <NewBoardGameForm />
+        </div>
       </div>
     )
   }
