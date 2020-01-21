@@ -4,24 +4,23 @@ import {Link} from 'react-router-dom'
 export class Footer extends React.Component {
   render() {
     return (
-      <div>
+      <div id="footer-container">
         <div>
-          <Link to="/about">
-            <h6>About</h6>
-          </Link>
-          <Link to="/returns">
-            <h6>Returns</h6>
-          </Link>
-          <Link to="/contactUs">
-            <h6>Contact Us</h6>
-          </Link>
-          <Link to="/storeHours">
-            <h6>Store Hours</h6>
-          </Link>
-          <Link to="/storeLocations">
-            <h6>Store Locations</h6>
-          </Link>
+          <Link to="/about">About </Link>
         </div>
+        <div>
+          <Link to="/returns"> Returns </Link>
+        </div>
+        <div>
+          <Link to="/contactUs">Contact Us </Link>
+        </div>
+        <div>
+          <Link to="/storeHours">Store Hours </Link>
+        </div>
+        <div>
+          <Link to="/storeLocations"> Store Locations </Link>
+        </div>
+
         <div>
           <img
             src="http://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c521.png"
