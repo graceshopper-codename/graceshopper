@@ -4,6 +4,7 @@ import AddToCart from './addToCart'
 
 const OneProduct = props => {
   let products = props.products
+
   return (
     <div className="products-container">
       {products &&
