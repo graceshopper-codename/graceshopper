@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const {Cart, Products, Order} = require('../db/models/index')
+const {confirmationEmail} = require('../email')
 
 //The Checkout Form Updating the order w/ address
 
@@ -16,6 +17,10 @@ router.put('/checkout', async (req, res, next) => {
       purchased: true,
       payment: req.body.payment
     })
+    // confirmation email sent if a user
+    if (req.user) {
+      confirmationEmail(req.user.email, req.user.name, updatedOrder.id)
+    }
     res.status(200).send(updatedOrder)
   } catch (err) {
     next(err)
