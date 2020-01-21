@@ -13,12 +13,7 @@ const Products = db.define('products', {
       'Strategy',
       'Family',
       'Party',
-      'Cooperative',
-      'deckbuilding',
-      'strategy',
-      'family',
-      'party',
-      'cooperative'
+      'Cooperative'
     ),
     allowNull: true
   },

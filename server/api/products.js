@@ -98,7 +98,7 @@ router.post('/', async (req, res, next) => {
 // })
 
 router.put('/:id', (req, res, next) => {
-  Products.findById(req.params.id)
+  Products.findByPk(req.params.id)
     .then(todo => todo.update(req.body))
     .then(todo => res.json(todo))
     .catch(next)

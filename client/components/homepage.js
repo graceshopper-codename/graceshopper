@@ -20,7 +20,7 @@ export class HomePage extends React.Component {
           able to find exactly what you're looking for in our store.
         </p>
         <h1>Current Sale Items:</h1>
-        <OneProduct products={products} />
+        {products && <OneProduct products={products} />}
       </div>
     )
   }

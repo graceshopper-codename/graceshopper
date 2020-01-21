@@ -14,7 +14,7 @@ class AllProducts extends React.Component {
     return (
       <div className="all-products">
         <h1>Products:</h1>
-        <OneProduct products={products} />
+        {products && <OneProduct products={products} />}
       </div>
     )
   }
