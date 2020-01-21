@@ -2,6 +2,7 @@ import React from 'react'
 import {getSingleProduct} from '../store/products'
 import {connect} from 'react-redux'
 import AddToCart from './addToCart'
+import {Link} from 'react-router-dom'
 
 export class SingleProduct extends React.Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ export class SingleProduct extends React.Component {
 
   render() {
     const product = this.props.products.product
+
     return (
       <div>
         {product && (
@@ -18,11 +20,18 @@ export class SingleProduct extends React.Component {
             <h1>{product.title}</h1>
             <img src={product.imageUrl} />
             <h4>{product.description}</h4>
-            <h4>{product.type}</h4>
-            <h4>${product.price / 100}</h4>
+
+            <h3>${product.price}</h3>
+            <p>
+              {' '}
+              Tag:{' '}
+              <Link to={`/products/tag/${product.type}`}>{product.type}</Link>
+            </p>
           </div>
         )}
-        <AddToCart product={product} />
+        <AddToCart product={product} add={this.addToCart} />
+        <p />
+        <Link to="/products">Return to all products</Link>
       </div>
     )
   }

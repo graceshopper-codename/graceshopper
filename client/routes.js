@@ -11,6 +11,7 @@ import {
   AllProducts,
   HomePage
 } from './components'
+import TaggedProducts from './components/productsByTag'
 import CompletedOrder from './components/Checkout/completed'
 import {me} from './store'
 import Admin from './components/admin/admin'
@@ -39,6 +40,7 @@ class Routes extends Component {
         <Route path="/cart/checkout/complete" component={CompletedOrder} />
         {/* <Route path="/signup" component={Signup} /> */}
         <Route path="/products/update/:id" component={UpdateProduct} />
+        <Route path="/products/tag/:tag" component={TaggedProducts} />
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/products/" component={AllProducts} />
         <Route path="/cart/checkout" component={Checkout} />
@@ -52,8 +54,6 @@ class Routes extends Component {
         <Route path="/returns" component={Returns} />
         <Route path="/" component={HomePage} />
         {/* Routes placed here are only available after logging in
-
-
         {/* {isLoggedIn && (
           <Switch>
             <Route path="/home" component={UserHome} />

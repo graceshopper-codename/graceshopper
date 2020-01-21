@@ -52,4 +52,12 @@ Products.findSales = function() {
   })
 }
 
+Products.findByTag = function(tag) {
+  return this.findAll({
+    where: {
+      type: tag
+    }
+  })
+}
+
 module.exports = Products

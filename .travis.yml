@@ -15,14 +15,16 @@ install:
 before_script:
   - psql -c 'create database "codenames-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 script:
-  - npm test             # test the code
+  - npm test # test the code
   - npm run build-client # make the bundle
-
-# before_deploy:
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
+  skip_cleanup: true
+  provider: heroku
+  # app should be your heroku app name; see README
+  app: codenames-boardgames
+  # the secure key indicates an encrypted value; see README
+  api_key:
+    secure: p5qzNVPB43XrWF2Qsz60AJhX6YBw0kazfAD0BXPLWM+nBjHREfHA8mB+kL6mUOD35Yko5OlfIMrVgnOcTVspH04Y1QKrhK4uvW3VeW6qRhSTJOQedxk0U499SV9gsl9AF9O1t5oDfTED3M3+c6PHj/wsBGyBNOfRins5TbmwHU3XWF7Q9vIrUC/bl7YkjSqkPyEV+GSuZlh+iqdQmLbdPLFYhlE1x1JW6rmCwvKQTZi9Hwr8ZwyivvgxcHD+1Ri3w42jtdPDQGV4DGh9g2Jn311G/aZeKfEoXDdLIzItTj43KiDAMcnTwPCH6KYRAnphPZIefkf/YiHke+gp80FvI64yn52AoGcvD/s9xFkFZj1BLfxbMMxhfWuD5CxGL90PncRz/B44JxsjTQLq38BHzBqcgg0gjqP1JD0oz8wpQeOfKIYQK4w1TNNYwCMqELfTLnpttB3UfU/MyW2RBj/fP0ZFSO0bX6Re3iz+7VOn6g405gETlM73wjODm5rLqRkRJgfatwrKF3lI+oy0ZIfRXOYLZ0bdTwYXuGc/5FBT8eyXFCLCt0majSdlD+5AkoGZa3dHoSsXST3ic34UiaoqQbau44Oe/pNmpAckeaQA8nMWeFXIHMNLJVpCHoN/KrAjIom5gklgDbT5lel+q1wSX5K0GLeFLsx+syHMeUhkM2k=

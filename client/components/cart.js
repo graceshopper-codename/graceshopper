@@ -16,10 +16,12 @@ class Cart extends React.Component {
 
   render() {
     let cartItems = this.props.cart
-    // let total = cartItems.reduce(
-    //   (acc, item) => acc + item.quantity * item.purchaseCost,
-    //   0
-    // )
+    let total = cartItems
+      ? cartItems.reduce(
+          (acc, item) => acc + item.quantity * item.purchaseCost,
+          0
+        )
+      : 0
     return (
       <div>
         <h1>Your Cart:</h1>
@@ -60,7 +62,7 @@ class Cart extends React.Component {
                 <td colSpan={3}>
                   <Link to="/cart/checkout">Checkout</Link>
                 </td>
-                {/* <td>${total / 100}</td> */}
+                {<td>${total / 100}</td>}
               </tr>
             </tfoot>
           </table>
