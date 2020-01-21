@@ -18,7 +18,6 @@ const tagProducts = productTag => ({type: TAG_PRODUCTS, productTag})
 const addNewProduct = product => ({type: ADD_PRODUCT, product})
 const updatingProduct = products => ({type: UPDATE_PRODUCT, products})
 
-
 //Thunk Creator
 export const getAllProducts = () => {
   return async dispatch => {
@@ -87,7 +86,6 @@ export const addProduct = product => {
   }
 }
 
-
 export const updateProduct = (update, product) => {
   return async dispatch => {
     try {
@@ -108,8 +106,8 @@ const manageProducts = (state = [], action) => {
     case SINGLE_PRODUCT:
       return action
     case ADD_PRODUCT:
-      state.products.push(action.product)
-      return {...state}
+      //state.products.push(action.product)
+      return [...state, ...action.product]
     case DELETE_PRODUCT:
       return {
         ...state,
