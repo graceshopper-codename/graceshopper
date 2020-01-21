@@ -2,17 +2,23 @@ const router = require('express').Router()
 const {User} = require('../db/models')
 module.exports = router
 
-const isAdmin = (req, res, next) => {
-  if (req.user.isAdmin) {
-    try {
-      return next()
-    } catch (err) {
-      next(err)
-    }
-  } else res.redirect('/')
-}
+// const isAdmin = (req, res, next) => {
+//   if (req.user.isAdmin) {
+//     try {
+//       return next()
+//     } catch (err) {
+//       next(err)
+//     }
+//   } else res.redirect('/')
+// }
 
-router.get('/', isAdmin, async (req, res, next) => {
+// const isAdmin = (req, res, next) => {
+//  // if (req.user) {
+//      res.redirect('/')
+// //}
+// }
+
+router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
       attributes: ['id', 'email', 'isAdmin']
