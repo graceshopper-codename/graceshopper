@@ -14,7 +14,7 @@ export class CartTotal extends React.Component {
       for (let i = 0; i < cart.length; i++) {
         total += cart[i].quantity
       }
-      return <h1>{total}</h1>
+      return <div> {total} </div>
     } else {
       return <div> {total} </div>
     }
