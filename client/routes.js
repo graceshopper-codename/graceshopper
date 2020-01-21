@@ -20,6 +20,7 @@ import {ContactUs} from './components/footer/contactUs'
 import {StoreHours} from './components/footer/storeHours'
 import {StoreLocations} from './components/footer/storeLocations'
 import {Returns} from './components/footer/returns'
+import UpdateProduct from './components/admin/updateProduct'
 
 /**
  * COMPONENT
@@ -38,6 +39,7 @@ class Routes extends Component {
         <Route path="/account" component={Account} />
         <Route path="/cart/checkout/complete" component={CompletedOrder} />
         {/* <Route path="/signup" component={Signup} /> */}
+        <Route path="/products/update/:id" component={UpdateProduct} />
         <Route path="/products/tag/:tag" component={TaggedProducts} />
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/products/" component={AllProducts} />
