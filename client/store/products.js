@@ -16,7 +16,6 @@ const saleProducts = products => ({type: SALE_PRODUCTS, products})
 const tagProducts = productTag => ({type: Tag_PRODUCTS, productTag})
 const addNewProduct = product => ({type: ADD_PRODUCT, product})
 
-
 //Thunk Creator
 export const getAllProducts = () => {
   return async dispatch => {
@@ -40,10 +39,11 @@ export const getSingleProduct = product => {
   }
 }
 
-export const getTagProduct = productTag => {
+export const getTagProduct = product => {
   return async dispatch => {
     try {
-      const result = await axios.get(`/api/products/${productTag}`)
+      console.log('IN THE THUNK')
+      const result = await axios.get(`/api/products/tag/${product}`)
       dispatch(tagProducts(result.data))
     } catch (err) {
       console.error(err)
@@ -83,7 +83,6 @@ export const addProduct = product => {
     }
   }
 }
-
 
 //Reducer
 const manageProducts = (state = [], action) => {
