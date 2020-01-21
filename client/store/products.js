@@ -6,6 +6,7 @@ const SINGLE_PRODUCT = 'SINGLE_PRODUCT'
 const DELETE_PRODUCT = 'DELETE_PRODUCT'
 const SALE_PRODUCTS = 'SALE_PRODUCTS'
 const ADD_PRODUCT = 'ADD_PRODUCT'
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
 
 //Action Creators
 const viewProducts = products => ({type: ALL_PRODUCTS, products})
@@ -13,6 +14,7 @@ const singleProduct = product => ({type: SINGLE_PRODUCT, product})
 const deletingProduct = productId => ({type: DELETE_PRODUCT, productId})
 const saleProducts = products => ({type: SALE_PRODUCTS, products})
 const addNewProduct = product => ({type: ADD_PRODUCT, product})
+const updatingProduct = products => ({type: UPDATE_PRODUCT, products})
 
 //Thunk Creator
 export const getAllProducts = () => {
@@ -70,6 +72,18 @@ export const addProduct = product => {
   }
 }
 
+export const updateProduct = (update, product) => {
+  return async dispatch => {
+    try {
+      console.log(update)
+      const result = await axios.put(`/api/products/${product}`, update)
+      dispatch(updatingProduct(result))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 //Reducer
 const manageProducts = (state = [], action) => {
   switch (action.type) {
@@ -88,6 +102,8 @@ const manageProducts = (state = [], action) => {
         })
       }
     case SALE_PRODUCTS:
+      return action
+    case UPDATE_PRODUCT:
       return action
     default:
       return state

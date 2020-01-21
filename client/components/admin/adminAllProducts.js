@@ -2,6 +2,8 @@ import React from 'react'
 import {getAllProducts, deleteProduct} from '../../store/products'
 import {connect} from 'react-redux'
 import NewBoardGameForm from './NewBoardGameForm'
+import UpdateProduct from './updateProduct'
+import {Link} from 'react-router-dom'
 
 export class AdminAllProducts extends React.Component {
   componentDidMount() {
@@ -24,6 +26,7 @@ export class AdminAllProducts extends React.Component {
               >
                 Remove Product
               </button>
+              <Link to={`/products/update/${product.id}`}>Update Product</Link>
             </div>
           ))}
         <div>

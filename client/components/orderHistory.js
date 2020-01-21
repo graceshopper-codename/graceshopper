@@ -10,13 +10,13 @@ export class OrderHistory extends React.Component {
   render() {
     const allOrders = this.props.cart
     const result = sort(allOrders)
-
+    console.log(result)
     return (
       <div>
         <h3>Order History:</h3>
-        {Object.keys(result).map((orders, orderId) => (
+        {Object.keys(result).map(orders => (
           <div key={orders}>
-            <h3>Order Id: {orderId}</h3>
+            <h3>Order Id: {orders}</h3>
             {result[orders].map(order => (
               <div key={order}>
                 <h4>Item: {order.productTitle}</h4>
