@@ -6,17 +6,18 @@ import {Link} from 'react-router-dom'
 
 export class TaggedProducts extends React.Component {
   componentDidMount() {
-    console.log(this.props)
     const tag = this.props.match.params.productTag
     this.props.getTagProduct(tag)
   }
 
   render() {
-    const products = this.props.products.product
+    console.log(this.props)
+    let products = this.props.products.product
     console.log('PROD', products)
 
     return (
       <div>
+
         <h1>Games by tag </h1>
 
         {products ? (
@@ -30,6 +31,8 @@ export class TaggedProducts extends React.Component {
         )}
 
         {/* <OneProduct products={products} />  */}
+
+
       </div>
     )
   }

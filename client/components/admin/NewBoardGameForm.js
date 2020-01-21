@@ -4,7 +4,7 @@ import {addProduct} from '../../store/products'
 
 let defaultState = {
   title: '',
-  type: '',
+  type: 'Deckbuilding',
   description: '',
   price: '',
   MSRP: ''
@@ -15,7 +15,7 @@ class NewBoardGameForm extends Component {
     super()
     this.state = {
       title: '',
-      type: '',
+      type: 'Deckbuilding',
       description: '',
       price: '',
       MSRP: ''
@@ -29,6 +29,7 @@ class NewBoardGameForm extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+    console.log(this.state)
   }
 
   handleSubmit(event) {
@@ -49,12 +50,24 @@ class NewBoardGameForm extends Component {
             onChange={this.handleChange}
           />
           <label htmlFor="type"> Type: </label>
-          <input
+          <select
             name="type"
             type="text"
             value={this.state.type}
             onChange={this.handleChange}
-          />
+          >
+            <option value="Deckbuilding">Deckbuilding</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Family">Family</option>
+            <option value="Party">Party</option>
+            <option value="Cooperative">Cooperative</option>
+          </select>
+          {/* <input
+            name="type"
+            type="text"
+            value={this.state.type}
+            onChange={this.handleChange}
+          /> */}
           <label htmlFor="description"> Description: </label>
           <input
             name="description"
