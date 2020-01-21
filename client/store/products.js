@@ -44,7 +44,7 @@ export const getSingleProduct = product => {
 export const getTagProduct = product => {
   return async dispatch => {
     try {
-      const result = await axios.get(`/api/products/tag/${productTag}`)
+      const result = await axios.get(`/api/products/tag/${product}`)
       dispatch(tagProducts(result.data))
     } catch (err) {
       console.error(err)

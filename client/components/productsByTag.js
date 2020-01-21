@@ -17,22 +17,17 @@ export class TaggedProducts extends React.Component {
 
     return (
       <div>
-
         <h1>Games by tag </h1>
 
-        {products ? (
-          <div>
-            <OneProduct products={products} />
-          </div>
-        ) : (
-          <div>
-            <h1>loading</h1>
-          </div>
-        )}
+        <div>
+          <OneProduct products={products} />
+        </div>
+
+        <div>
+          <h1>loading</h1>
+        </div>
 
         {/* <OneProduct products={products} />  */}
-
-
       </div>
     )
   }
