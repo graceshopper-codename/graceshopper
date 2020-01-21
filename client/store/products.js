@@ -90,7 +90,7 @@ export const updateProduct = (update, product) => {
     try {
       console.log(update)
       const result = await axios.put(`/api/products/${product}`, update)
-      dispatch(updatingProduct(result))
+      dispatch(updatingProduct(result.data))
     } catch (err) {
       console.error(err)
     }

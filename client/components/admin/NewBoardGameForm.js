@@ -62,12 +62,6 @@ class NewBoardGameForm extends Component {
             <option value="Party">Party</option>
             <option value="Cooperative">Cooperative</option>
           </select>
-          {/* <input
-            name="type"
-            type="text"
-            value={this.state.type}
-            onChange={this.handleChange}
-          /> */}
           <label htmlFor="description"> Description: </label>
           <input
             name="description"

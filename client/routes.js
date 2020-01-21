@@ -51,6 +51,13 @@ class Routes extends Component {
         <Route path="/storeHours" component={StoreHours} />
         <Route path="/returns" component={Returns} />
         <Route path="/" component={HomePage} />
+        <Route
+          exact
+          path="//pin"
+          component={() => {
+            window.location = 'https://www.pinterest.com/codenamescodegames/'
+          }}
+        />
         {/* Routes placed here are only available after logging in
         {/* {isLoggedIn && (
           <Switch>
