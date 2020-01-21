@@ -32,7 +32,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.get('/tag/:productTag', async (req, res, next) => {
   try {
-    console.log('IN THE API', req.params.productTag)
+    console.log("WE'RE IN API TRY", req.params.productTag)
     const tag = req.params.productTag
     const tagProducts = await Products.findByTag(tag)
     res.send(tagProducts)
@@ -84,4 +84,22 @@ router.post('/', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
+})
+
+// router.put('/update/:id', async (req, res, next) => {
+//   try {
+//     const id = req.params.id
+//     const product = await Products.findByPk(id)
+//     const updated = await product.update(req.body)
+//     res.send(updated)
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
+router.put('/:id', (req, res, next) => {
+  Products.findById(req.params.id)
+    .then(todo => todo.update(req.body))
+    .then(todo => res.json(todo))
+    .catch(next)
 })

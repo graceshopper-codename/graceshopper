@@ -12,6 +12,7 @@ export class SingleProduct extends React.Component {
 
   render() {
     const product = this.props.products.product
+
     return (
       <div>
         {product && (

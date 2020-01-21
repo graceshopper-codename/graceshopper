@@ -29,6 +29,7 @@ export class TaggedProducts extends React.Component {
     return (
       <div>
         <h1>TAG</h1>
+
         <OneProduct products={products} />
       </div>
     )
