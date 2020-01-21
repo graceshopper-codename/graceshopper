@@ -20,22 +20,21 @@ router.get('/sale', async (req, res, next) => {
   }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/tag/:productTag', async (req, res, next) => {
   try {
-    const productId = req.params.id
-    const singleProduct = await Products.findByPk(productId)
-    res.send(singleProduct)
+    const tag = req.params.productTag
+    const tagProducts = await Products.findByTag(tag)
+    res.send(tagProducts)
   } catch (error) {
     next(error)
   }
 })
 
-router.get('/tag/:productTag', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    console.log('IN THE API', req.params.productTag)
-    const tag = req.params.productTag
-    const tagProducts = await Products.findByTag(tag)
-    res.send(tagProducts)
+    const productId = req.params.id
+    const singleProduct = await Products.findByPk(productId)
+    res.send(singleProduct)
   } catch (error) {
     next(error)
   }

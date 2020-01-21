@@ -20,7 +20,7 @@ export class SingleProduct extends React.Component {
             <img src={product.imageUrl} />
             <h4>{product.description}</h4>
 
-            <h3>${product.price}</h3>
+            <h3>${product.price / 100}</h3>
             <h4>
               Tag:{' '}
               <Link to={`/products/tag/${product.type}`}>{product.type}</Link>

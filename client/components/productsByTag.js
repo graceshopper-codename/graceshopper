@@ -2,20 +2,9 @@ import React from 'react'
 import {getTagProduct} from '../store/products'
 import {connect} from 'react-redux'
 import OneProduct from './individualprod'
-import AddToCart from './addToCart'
 import {Link} from 'react-router-dom'
 
 export class TaggedProducts extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.addToCart = this.addToCart.bind(this)
-  // }
-
-  async addToCart(item) {
-    const result = await axios.post('/api/cart', item)
-    return result.data
-  }
-
   componentDidMount() {
     console.log(this.props)
     const tag = this.props.match.params.productTag
@@ -28,8 +17,19 @@ export class TaggedProducts extends React.Component {
 
     return (
       <div>
-        <h1>TAG</h1>
-        <OneProduct products={products} />
+        <h1>Games by tag </h1>
+
+        {products ? (
+          <div>
+            <OneProduct products={products} />
+          </div>
+        ) : (
+          <div>
+            <h1>loading</h1>
+          </div>
+        )}
+
+        {/* <OneProduct products={products} />  */}
       </div>
     )
   }
