@@ -7,7 +7,7 @@ export class UpdateProduct extends React.Component {
     super()
     this.state = {
       title: '',
-      type: '',
+      type: 'Deckbuilding',
       description: '',
       price: '',
       MSRP: ''
@@ -15,13 +15,6 @@ export class UpdateProduct extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-
-  // componentDidUpdate(prevProps) {
-  //   // console.log(prevProps)
-  //   if (this.props.state !== prevProps.state) {
-  //     this.setState(this.props.state);
-  //   }
-  // }
 
   handleChange(event) {
     this.setState({
@@ -31,11 +24,11 @@ export class UpdateProduct extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.updateProduct(this.state, this.props.match.params.id)
+    this.props.updateProduct(this.state, this.props.id)
 
     this.setState({
       title: '',
-      type: '',
+      type: 'Deckbuilding',
       description: '',
       price: '',
       MSRP: ''
@@ -43,6 +36,7 @@ export class UpdateProduct extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="form-container">
@@ -55,12 +49,18 @@ export class UpdateProduct extends React.Component {
               onChange={this.handleChange}
             />
             <label htmlFor="type"> Type: </label>
-            <input
+            <select
               name="type"
               type="text"
               value={this.state.type}
               onChange={this.handleChange}
-            />
+            >
+              <option value="Deckbuilding">Deckbuilding</option>
+              <option value="Strategy">Strategy</option>
+              <option value="Family">Family</option>
+              <option value="Party">Party</option>
+              <option value="Cooperative">Cooperative</option>
+            </select>
             <label htmlFor="description"> Description: </label>
             <input
               name="description"
@@ -90,8 +90,12 @@ export class UpdateProduct extends React.Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => ({
+  id: ownProps.id
+})
+
 const mapDispatchToProp = dispatch => ({
   updateProduct: (item, itemId) => dispatch(updateProduct(item, itemId))
 })
 
-export default connect(null, mapDispatchToProp)(UpdateProduct)
+export default connect(mapStateToProps, mapDispatchToProp)(UpdateProduct)

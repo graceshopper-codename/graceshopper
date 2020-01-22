@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
+import CartTotal from '../components/cartTotal'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div id="nav-bar-container">
@@ -28,13 +29,14 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <Link to="/products">All Products</Link>
       </div>
 
-      <div id="cart">
+      <div className="cart-section" id="cart">
         <Link to="/cart">
           <img
-            height={50}
-            width={50}
+            height={40}
+            width={40}
             src="https://assets1.risnews.com/styles/content_sm/s3/2018-04/shopping-cart.png?itok=LUk_XbaE"
           />
+          <CartTotal />
         </Link>
       </div>
     </nav>

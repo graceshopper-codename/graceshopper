@@ -13,12 +13,7 @@ const Products = db.define('products', {
       'Strategy',
       'Family',
       'Party',
-      'Cooperative',
-      'deckbuilding',
-      'strategy',
-      'family',
-      'party',
-      'cooperative'
+      'Cooperative'
     ),
     allowNull: true
   },
@@ -28,7 +23,10 @@ const Products = db.define('products', {
   },
   price: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      min: 0
+    }
   },
   MSRP: {
     type: Sequelize.INTEGER,
@@ -46,7 +44,7 @@ Products.findSales = function() {
   return this.findAll({
     where: {
       price: {
-        [Sequelize.Op.lt]: 6000
+        [Sequelize.Op.lt]: Sequelize.col('MSRP')
       }
     }
   })

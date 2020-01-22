@@ -14,7 +14,6 @@ import {
 import TaggedProducts from './components/productsByTag'
 import CompletedOrder from './components/Checkout/completed'
 import {me} from './store'
-import Admin from './components/admin/admin'
 import {About} from './components/footer/about'
 import {ContactUs} from './components/footer/contactUs'
 import {StoreHours} from './components/footer/storeHours'
@@ -39,13 +38,16 @@ class Routes extends Component {
         <Route path="/account" component={Account} />
         <Route path="/cart/checkout/complete" component={CompletedOrder} />
         {/* <Route path="/signup" component={Signup} /> */}
-        <Route path="/products/tag/:productTag" component={TaggedProducts} />
+        <Route
+          exact
+          path="/products/tag/:productTag"
+          component={TaggedProducts}
+        />
         <Route path="/products/update/:id" component={UpdateProduct} />
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/products/" component={AllProducts} />
         <Route path="/cart/checkout" component={Checkout} />
         <Route path="/cart" component={Cart} />
-        <Route path="/users" component={Admin} />
         <Route path="/admin" component={AdminView} /> */}
         <Route path="/about" component={About} />
         <Route path="/contactUs" component={ContactUs} />
@@ -53,6 +55,13 @@ class Routes extends Component {
         <Route path="/storeHours" component={StoreHours} />
         <Route path="/returns" component={Returns} />
         <Route path="/" component={HomePage} />
+        <Route
+          exact
+          path="//pin"
+          component={() => {
+            window.location = 'https://www.pinterest.com/codenamescodegames/'
+          }}
+        />
         {/* Routes placed here are only available after logging in
         {/* {isLoggedIn && (
           <Switch>

@@ -1,5 +1,5 @@
 import React from 'react'
-import {getSingleProduct} from '../store/products'
+import {getSingleProduct} from '../store/product'
 import {connect} from 'react-redux'
 import AddToCart from './addToCart'
 import {Link} from 'react-router-dom'
@@ -11,17 +11,17 @@ export class SingleProduct extends React.Component {
   }
 
   render() {
-    const product = this.props.products.product
+    const product = this.props.product.product
 
     return (
-      <div>
+      <div className="single-prod-page">
         {product && (
           <div>
             <h1>{product.title}</h1>
             <img src={product.imageUrl} />
             <h4>{product.description}</h4>
 
-            <h3>${product.price}</h3>
+            <h3>${product.price / 100}</h3>
             <h4>
               Tag:{' '}
               <Link to={`/products/tag/${product.type}`}>{product.type}</Link>
@@ -37,7 +37,7 @@ export class SingleProduct extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.products
+  product: state.product
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -62,7 +62,7 @@ class Cart extends React.Component {
                 <td colSpan={3}>
                   <Link to="/cart/checkout">Checkout</Link>
                 </td>
-                {<td>${total / 100}</td>}
+                <td>${total / 100}</td>
               </tr>
             </tfoot>
           </table>

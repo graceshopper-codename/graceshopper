@@ -120,6 +120,66 @@ async function seed() {
       MSRP: 5000,
       imageUrl:
         'https://cf.geekdo-images.com/itemrep/img/j3KnNONTvPaOqyY_pwhS9C9s5bk=/fit-in/246x300/pic2582929.jpg'
+    }),
+    Products.create({
+      title: 'Mansions of Madness',
+      type: 'Cooperative',
+      description:
+        "Mansions of Madness is a fully cooperative, app-driven board game of horror and mystery for one to five players that takes place in the same universe as Eldritch Horror and Elder Sign. Let the immersive app guide you through the veiled streets of Innsmouth and the haunted corridors of Arkham's cursed mansions as you search for answers and respite. Eight brave investigators stand ready to confront four scenarios of fear and mystery, collecting weapons, tools, and information, solving complex puzzles, and fighting monsters, insanity, and death. Open the door and step inside these hair-raising Mansions of Madness. It will take more than just survival to conquer the evils terrorizing this town.",
+      price: 8000,
+      MSRP: 10000,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/B0F4U1vQnELePmNg4n5dtvcryGU=/fit-in/246x300/pic3118622.jpg'
+    }),
+    Products.create({
+      title: 'Too Many Bones',
+      type: 'Cooperative',
+      description:
+        "Too Many Bones comes loaded for bear by breaking into a new genre: the dice-builder RPG. This game takes everything you think you know about dice-rolling and turns it on its head. Dripping with strategy, this fantasy-based RPG puts you in the skin of a new race and takes you on an adventure to the northern territories to root out and defeat growing enemy forces and of course the infamous 'baddie' responsible.",
+      price: 25000,
+      MSRP: 18000,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/rpfz3NB-uyK0rQ_rYwBbXu2OPKE=/fit-in/246x300/pic3684814.jpg'
+    }),
+    Products.create({
+      title: 'Chronicles of Crime',
+      type: 'Cooperative',
+      description:
+        'Chronicles of Crime is a cooperative game of crime investigation, mixing an app, a board game and a touch of Virtual Reality. With the same physical components (board, locations, characters and items), players will be able to play plenty of different scenarios and solve as many different crime stories. Players start the app, choose the scenario they want to play, and follow the story. The goal being to catch the killer of the current case in the shortest short time possible.',
+      price: 6000,
+      MSRP: 6000,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/dK9h9FzFFmfMoMA3kbdryyynnt0=/fit-in/246x300/pic4317519.jpg'
+    }),
+    Products.create({
+      title: 'Near and Far',
+      type: 'Family',
+      description:
+        "In Near and Far, you and up to three friends explore many different maps in a search for the Last Ruin, recruiting adventurers, hunting for treasure, and competing to be the most storied traveler. You must collect food and equipment at town for long journeys to mysterious locales, making sure not to forget enough weapons to fight off bandits, living statues, and rusty robots! Sometimes in your travels you'll run into something unique and one of your friends will read what happens to you from a book of stories, giving you a choice of how to react, creating a new and memorable tale each time you play.",
+      price: 5000,
+      MSRP: 5500,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/ll_MMuOyv3o5XR0bTu-LbGuop5Q=/fit-in/246x300/pic3605785.jpg'
+    }),
+    Products.create({
+      title: 'Deception',
+      type: 'Party',
+      description:
+        "Deception: Murder in Hong Kong is a game of deduction and deception for 4-12 players that plays in about 20 minutes. In the game, players take on the roles of investigators attempting to solve a murder case – but there's a twist. The killer is one of the investigators! Each players role and team are randomly assigned at the start of play and include the unique roles of Forensic Scientist, Witness, Investigator, Murderer, and Accomplice. While the Investigators attempt to deduce the truth, the murderers team must deceive and mislead. This is a battle of wits!",
+      price: 4500,
+      MSRP: 5000,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/uLpjgYnNCcZ0uKIYXOvsaoN_ppU=/fit-in/246x300/pic3033330.jpg'
+    }),
+    Products.create({
+      title: 'Dixit',
+      type: 'Family',
+      description:
+        "One player is the storyteller for the turn and looks at the images on the 6 cards in her hand. From one of these, she makes up a sentence and says it out loud (without showing the card to the other players). Each other player selects the card in their hands which best matches the sentence and gives the selected card to the storyteller, without showing it to the others. The storyteller shuffles her card with all the received cards. All pictures are shown face up and every player has to bet upon which picture was the storyteller's.",
+      price: 2500,
+      MSRP: 2750,
+      imageUrl:
+        'https://cf.geekdo-images.com/itemrep/img/pOiJxM-COUIpG4Rsb4vGdHH4894=/fit-in/246x300/pic3483909.jpg'
     })
   ])
   console.log(`seeded ${products.length} products`)

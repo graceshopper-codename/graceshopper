@@ -2,35 +2,29 @@ import React from 'react'
 import {getTagProduct} from '../store/products'
 import {connect} from 'react-redux'
 import OneProduct from './individualprod'
-import AddToCart from './addToCart'
 import {Link} from 'react-router-dom'
 
 export class TaggedProducts extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.addToCart = this.addToCart.bind(this)
-  // }
-
-  async addToCart(item) {
-    const result = await axios.post('/api/cart', item)
-    return result.data
-  }
-
   componentDidMount() {
-    console.log(this.props)
     const tag = this.props.match.params.productTag
     this.props.getTagProduct(tag)
   }
 
   render() {
-    const products = this.props.products.product
-    console.log('PROD', products)
+    let products = this.props.products.product
 
     return (
       <div>
-        <h1>TAG</h1>
+        <h1> All {this.props.match.params.productTag} Games</h1>
+        <Link to="/products">
+          <button className="button" type="button">
+            Return to all products
+          </button>
+        </Link>
 
-        <OneProduct products={products} />
+        <div>
+          <OneProduct products={products} />
+        </div>
       </div>
     )
   }
