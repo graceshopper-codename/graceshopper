@@ -6,22 +6,21 @@ const {confirmationEmail} = require('../email')
 
 router.put('/checkout', async (req, res, next) => {
   try {
-    let currentOrder = await Order.findOne({
-      where: {
-        userId: req.body.userId,
-        purchased: false
-      }
-    })
+    console.log('REQ BODY', req.body)
+    let currentOrder = await Order.findByPk(req.body.orderId)
     let updatedOrder = await currentOrder.update({
-      address: req.body.address,
       purchased: true,
-      payment: req.body.payment
+      cost: req.body.amount
+      // payment: req.body.payment
+      // address: req.body.shippingAddress,
     })
     // confirmation email sent if a user
     if (req.user) {
       confirmationEmail(req.user.email, req.user.name, updatedOrder.id)
     }
-    res.status(200).send(updatedOrder)
+    res.status(200).json(updatedOrder)
+    //    history.push('/home')
+    //    res.status(200).redirect('/cart/checkout/complete')
   } catch (err) {
     next(err)
   }
