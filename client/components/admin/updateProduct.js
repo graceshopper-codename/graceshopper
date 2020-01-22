@@ -1,5 +1,5 @@
 import React from 'react'
-import {updateProduct} from '../../store/products'
+import {updateProduct} from '../../store/product'
 import {connect} from 'react-redux'
 
 export class UpdateProduct extends React.Component {
