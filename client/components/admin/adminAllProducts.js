@@ -26,8 +26,8 @@ export class AdminAllProducts extends React.Component {
                   <div className="admin-prod-info">
                     <h2>{product.title}</h2>
                     <h4>Type: {product.type}</h4>
-                    <h4>Price: ${product.price / 100}</h4>
-                    <h4>MSRP: ${product.MSRP / 100}</h4>
+                    <h4>Price: {product.price}</h4>
+                    <h4>MSRP: {product.MSRP}</h4>
                     <button
                       type="submit"
                       onClick={this.props.deleteProduct(product.id)}

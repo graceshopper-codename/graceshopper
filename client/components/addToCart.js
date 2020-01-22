@@ -5,10 +5,11 @@ import {connect} from 'react-redux'
 const AddToCart = props => {
   return (
     <button
+      className="add-cart-button"
       onClick={() => props.addingToCart(props.product, props.quantity)}
       type="submit"
     >
-      Add To Cart
+      Buy me!
     </button>
   )
 }

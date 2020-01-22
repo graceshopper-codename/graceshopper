@@ -8,19 +8,27 @@ const TagList = props => {
       <h3>Search by Game Type:</h3>
       <div>
         <Link to="/products/tag/Party">
-          <button type="button">Party</button>
+          <button className="button" type="button">
+            Party
+          </button>
         </Link>
         <></>
         <Link to="/products/tag/Family">
-          <button type="button">Family</button>
+          <button className="button" type="button">
+            Family
+          </button>
         </Link>
         <></>
         <Link to="/products/tag/Strategy">
-          <button type="button">Strategy</button>
+          <button className="button" type="button">
+            Strategy
+          </button>
         </Link>
         <></>
         <Link to="/products/tag/Cooperative">
-          <button type="button">Cooperative</button>
+          <button className="button" type="button">
+            Cooperative
+          </button>
         </Link>
       </div>
     </div>
