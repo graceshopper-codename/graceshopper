@@ -2,7 +2,6 @@ import React from 'react'
 import {getAllProducts} from '../store/products'
 import {connect} from 'react-redux'
 import OneProduct from './individualprod'
-import tagList from './tagList'
 import TagList from './tagList'
 
 class AllProducts extends React.Component {

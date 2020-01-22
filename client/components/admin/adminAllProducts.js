@@ -16,7 +16,7 @@ export class AdminAllProducts extends React.Component {
     return (
       <div className="admin-products-container">
         <div>
-          <h3>Products:</h3>
+          <h1>Products:</h1>
         </div>
         <div className="admin-prod">
           {allProducts &&
@@ -24,9 +24,10 @@ export class AdminAllProducts extends React.Component {
               <div className="row-padding">
                 <div className="admin-single-prod" key={product.id}>
                   <div className="admin-prod-info">
-                    <h3>{product.title}</h3>
-                    <h4>Tag: {product.type}</h4>
-                    <h4>${product.price / 100}</h4>
+                    <h2>{product.title}</h2>
+                    <h4>Type: {product.type}</h4>
+                    <h4>Price: ${product.price / 100}</h4>
+                    <h4>MSRP: ${product.MSRP / 100}</h4>
                     <button
                       type="submit"
                       onClick={this.props.deleteProduct(product.id)}
@@ -34,7 +35,9 @@ export class AdminAllProducts extends React.Component {
                       Remove Product
                     </button>
                   </div>
-                  <img src={product.imageUrl} />
+                  <div className="img">
+                    <img src={product.imageUrl} />
+                  </div>
                   <div className="form-container">
                     <p>Update Game Information:</p>
                     <UpdateProduct id={product.id} />
