@@ -44,7 +44,7 @@ Products.findSales = function() {
   return this.findAll({
     where: {
       price: {
-        [Sequelize.Op.lt]: 6000
+        [Sequelize.Op.lt]: Sequelize.col('MSRP')
       }
     }
   })
