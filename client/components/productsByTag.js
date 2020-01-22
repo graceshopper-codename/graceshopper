@@ -16,12 +16,15 @@ export class TaggedProducts extends React.Component {
     return (
       <div>
         <h1> All {this.props.match.params.productTag} Games</h1>
+        <Link to="/products">
+          <button className="button" type="button">
+            Return to all products
+          </button>
+        </Link>
 
         <div>
           <OneProduct products={products} />
         </div>
-
-        <Link to="/products">Return to all products</Link>
       </div>
     )
   }

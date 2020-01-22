@@ -3,8 +3,7 @@ body {
   background-image: linear-gradient(
     to right,
     #efefd0 0%,
-    #efefd0 60%,
-    #fdb813 100%
+    #fed8b1 100% /* #fdb813 100% */
   );
   /* background-color: #efefd0; */
   margin: 0;
@@ -27,6 +26,9 @@ a:visited {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* background-image: linear-gradient(
+    to right, #395480 0%, #c2e7da 50%,
+    #395480 100%); */
   background-color: #c2e7da;
   box-shadow: 0px 0px 15px midnightblue;
   height: 10%;
@@ -36,7 +38,7 @@ a:visited {
 
 #site-name {
   font-family: 'Rock Salt', cursive;
-  color: #395480;
+  color: white;
   font-size: 2em;
   margin: 0.2em;
 }
@@ -198,4 +200,10 @@ form div {
 .order-item {
   padding-right: 50px;
   padding-left: 25px;
+}
+
+.cart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
