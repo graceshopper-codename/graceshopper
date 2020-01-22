@@ -76,8 +76,10 @@ const manageProducts = (state = [], action) => {
     case ALL_PRODUCTS:
       return action
     case ADD_PRODUCT:
-      state.products.push(action.product)
-      return {...state}
+      return {
+        ...state,
+        products: [...state.products, ...action.product]
+      }
     case DELETE_PRODUCT:
       return {
         ...state,
