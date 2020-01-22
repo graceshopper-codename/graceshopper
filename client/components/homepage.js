@@ -14,11 +14,12 @@ export class HomePage extends React.Component {
 
     return (
       <div>
-        <h1>Welcome to Codenames!</h1>
+        <h1>Welcome to CODEnames =D</h1>
         <p>
-          We're proud to be the best online retailer for board games! No matter
-          what type of game you like, or who you're playing with - you'll be
-          able to find exactly what you're looking for in our store.
+          We're proud to be the best online retailer for board games that was
+          created as a project at a coding bootcamp! No matter what type of game
+          you like, or who you're playing with - you'll be able to find exactly
+          what you're looking for in our store if it's included our seed file!
         </p>
 
         <h2>Current Sale Items:</h2>
