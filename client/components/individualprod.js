@@ -13,7 +13,9 @@ const OneProduct = props => {
             <Link to={`/products/${product.id}`}>
               <div className="product-title">{product.title}</div>
             </Link>
-            <img width={300} height={300} src={product.imageUrl} />
+            <div className="img">
+              <img width={300} height={300} src={product.imageUrl} />
+            </div>
             <div className="product-price">
               ${product.price / 100}
               <AddToCart product={product} quantity={1} />
