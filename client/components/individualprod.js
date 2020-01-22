@@ -10,7 +10,7 @@ const OneProduct = props => {
       {products &&
         products.map(product => (
           <div key={product.id} className="product-container">
-            <Link to={`products/${product.id}`}>
+            <Link to={`/products/${product.id}`}>
               <div className="product-title">{product.title}</div>
             </Link>
             <img width={300} height={300} src={product.imageUrl} />
