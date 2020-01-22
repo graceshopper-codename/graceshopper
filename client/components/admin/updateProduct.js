@@ -1,5 +1,5 @@
 import React from 'react'
-import {updateProduct} from '../../store/product'
+import {updateProduct} from '../../store/products'
 import {connect} from 'react-redux'
 
 export class UpdateProduct extends React.Component {
@@ -7,7 +7,7 @@ export class UpdateProduct extends React.Component {
     super()
     this.state = {
       title: '',
-      type: '',
+      type: 'Deckbuilding',
       description: '',
       price: '',
       MSRP: ''
@@ -28,7 +28,7 @@ export class UpdateProduct extends React.Component {
 
     this.setState({
       title: '',
-      type: '',
+      type: 'Deckbuilding',
       description: '',
       price: '',
       MSRP: ''

@@ -69,20 +69,20 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-// router.put('/update/:id', async (req, res, next) => {
-//   try {
-//     const id = req.params.id
-//     const product = await Products.findByPk(id)
-//     const updated = await product.update(req.body)
-//     res.send(updated)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
-
-router.put('/:id', (req, res, next) => {
-  Products.findByPk(req.params.id)
-    .then(todo => todo.update(req.body))
-    .then(todo => res.json(todo))
-    .catch(next)
+router.put('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id
+    const product = await Products.findByPk(id)
+    const updated = await product.update(req.body)
+    res.send(updated)
+  } catch (err) {
+    next(err)
+  }
 })
+
+// router.put('/:id', (req, res, next) => {
+//   Products.findByPk(req.params.id)
+//     .then(todo => todo.update(req.body))
+//     .then(todo => res.json(todo))
+//     .catch(next)
+// })
