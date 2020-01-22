@@ -1,5 +1,5 @@
 import React from 'react'
-import {getSingleProduct} from '../store/products'
+import {getSingleProduct} from '../store/product'
 import {connect} from 'react-redux'
 import AddToCart from './addToCart'
 import {Link} from 'react-router-dom'
@@ -11,7 +11,7 @@ export class SingleProduct extends React.Component {
   }
 
   render() {
-    const product = this.props.products.product
+    const product = this.props.product.product
 
     return (
       <div>
@@ -37,7 +37,7 @@ export class SingleProduct extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.products
+  product: state.product
 })
 
 const mapDispatchToProps = dispatch => ({

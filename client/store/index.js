@@ -7,13 +7,15 @@ import manageProducts from './products'
 import manageOrders from './orders'
 import manageCart from './cart'
 import manageUsersForAdmin from './usersForAdmin'
+import manageProduct from './product'
 
 const reducer = combineReducers({
   user: manageUsers,
   products: manageProducts,
   orders: manageOrders,
   cart: manageCart,
-  usersForAdmin: manageUsersForAdmin
+  usersForAdmin: manageUsersForAdmin,
+  product: manageProduct
 })
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
