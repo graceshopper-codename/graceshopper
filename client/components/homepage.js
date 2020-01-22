@@ -21,10 +21,9 @@ export class HomePage extends React.Component {
           you like, or who you're playing with - you'll be able to find exactly
           what you're looking for in our store if it's included our seed file!
         </p>
-
-        <h2>Current Sale Items:</h2>
-        {products && <OneProduct products={products} />}
         <TagList />
+        <h2>SALE ITEMS:</h2>
+        {products && <OneProduct products={products} />}
       </div>
     )
   }
