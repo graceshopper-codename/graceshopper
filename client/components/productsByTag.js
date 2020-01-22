@@ -2,7 +2,7 @@ import React from 'react'
 import {getTagProduct} from '../store/products'
 import {connect} from 'react-redux'
 import OneProduct from './individualprod'
-import TagList from './tagList'
+import {Link} from 'react-router-dom'
 
 export class TaggedProducts extends React.Component {
   componentDidMount() {
@@ -21,7 +21,7 @@ export class TaggedProducts extends React.Component {
           <OneProduct products={products} />
         </div>
 
-        <TagList />
+        <Link to="/products">Return to all products</Link>
       </div>
     )
   }
