@@ -14,7 +14,7 @@ export class SingleProduct extends React.Component {
     const product = this.props.product.product
 
     return (
-      <div>
+      <div className="single-prod-page">
         {product && (
           <div>
             <h1>{product.title}</h1>

@@ -11,23 +11,20 @@ export class TaggedProducts extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     let products = this.props.products.product
-    console.log('PROD', products)
 
     return (
       <div>
-        <h1>Games by tag </h1>
+        <h1> All {this.props.match.params.productTag} Games</h1>
+        <Link to="/products">
+          <button className="button" type="button">
+            Return to all products
+          </button>
+        </Link>
 
         <div>
           <OneProduct products={products} />
         </div>
-
-        <div>
-          <h1>loading</h1>
-        </div>
-
-        {/* <OneProduct products={products} />  */}
       </div>
     )
   }

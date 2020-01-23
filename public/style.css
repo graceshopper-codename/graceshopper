@@ -1,6 +1,11 @@
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: #efefd0;
+  font-family: 'Cabin', sans-serif;
+  background-image: linear-gradient(
+    to right,
+    #efefd0 0%,
+    #fed8b1 100% /* #fdb813 100% */
+  );
+  /* background-color: #efefd0; */
   margin: 0;
 }
 
@@ -21,7 +26,11 @@ a:visited {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  /* background-image: linear-gradient(
+    to right, #395480 0%, #c2e7da 50%,
+    #395480 100%); */
   background-color: #c2e7da;
+  box-shadow: 0px 0px 15px midnightblue;
   height: 10%;
   margin: 0;
   padding: 0 1em;
@@ -29,7 +38,7 @@ a:visited {
 
 #site-name {
   font-family: 'Rock Salt', cursive;
-  color: #395480;
+  color: white;
   font-size: 2em;
   margin: 0.2em;
 }
@@ -45,6 +54,30 @@ a:visited {
 nav a {
   display: inline-block;
   margin: 1em;
+}
+
+.button {
+  font-size: 75%;
+  margin: 0% 0.5% 1% 0.5%;
+  padding: 0.5% 0.5% 0.5% 0.5%;
+  font-weight: bold;
+  border-radius: 20px 40px 30px 5px;
+  box-shadow: 2px 2px 1px midnightblue;
+}
+
+.add-cart-button {
+  background-image: linear-gradient(
+    to right,
+    #c2e7da 0%,
+    #c2e7da 50%,
+    #c2e7da 100%
+  );
+  text-transform: uppercase;
+  font-size: 75%;
+  margin: 2% 2% 2% 2%;
+  font-weight: bold;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 2px 2px 1px midnightblue;
 }
 
 .all-products h1 {
@@ -74,6 +107,60 @@ nav a {
   font-size: 120%;
 }
 
+.admin-products-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.admin-prod {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.admin-prod {
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.admin-single-prod {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: space-between;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+.admin-prod-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.row-padding {
+  padding-left: 5%;
+  padding-right: 25%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-bottom: purple;
+  border-style: outset;
+}
+
+.board-game-form {
+  display: flex;
+  flex-direction: column;
+  background-color: ivory;
+  font-size: 80%;
+  padding: 5px 15px 5px 15px;
+  border: 5px;
+  color: black;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -93,4 +180,30 @@ form div {
   width: 100%;
   margin-top: 3em;
   font-size: 80%;
+}
+
+.order-history-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-individual {
+  display: flex;
+  padding: 5% 5% 5% 5%;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.order-item {
+  padding-right: 50px;
+  padding-left: 25px;
+}
+
+.cart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

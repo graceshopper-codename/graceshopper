@@ -53,32 +53,16 @@ router.delete('/:id', async (req, res, next) => {
   }
 })
 
-// router.post('/', async (req, res, next) => {
-//   try {
-//     let {title, type, description, price, imageUrl} = req.body
-//     const newProduct = await Products.create(
-//       title,
-//       type,
-//       description,
-//       price,
-//       imageUrl
-//     )
-//     res.send(newProduct)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
-
-//was working
-//  router.post('/', async (req, res, next) => {
-//   Products.create(req.body)
-//     .then(product => res.json(product))
-//     .catch(next)
-// })
-
 router.post('/', async (req, res, next) => {
   try {
-    const product = await Products.create(req.body)
+    const {title, type, description, price, MSRP} = req.body
+    const product = await Products.create({
+      title,
+      type,
+      description,
+      price,
+      MSRP
+    })
     res.status(201).send(product)
   } catch (error) {
     next(error)
