@@ -6,7 +6,7 @@ import history from '../../history'
 const STRIPE_PUBLISHABLE = 'pk_test_L3Vq2Zgcq1RdL3ss2kPjQfwv000PVzD9jp'
 const PAYMENT_SERVER_URL =
   process.env.NODE_ENV === 'production'
-    ? process.env.PROD_URI
+    ? 'https://codenames-boardgames.herokuapp.com'
     : 'http://localhost:8080'
 const AXIOS_URL = PAYMENT_SERVER_URL + '/api/cart/checkout'
 
