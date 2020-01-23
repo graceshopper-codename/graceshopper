@@ -8,6 +8,7 @@ const PAYMENT_SERVER_URL =
   process.env.NODE_ENV === 'production'
     ? process.env.PROD_URI
     : 'http://localhost:8080'
+const AXIOS_URL = PAYMENT_SERVER_URL + '/api/cart/checkout'
 
 const CURRENCY = 'USD'
 
@@ -23,10 +24,8 @@ const onToken = (amount, description, orderId) => async token => {
       currency: CURRENCY,
       amount: amount
     })
-    let updatedOrder = await axios.put(
-      PAYMENT_SERVER_URL + '/api/cart/checkout',
-      {orderId, amount}
-    )
+    console.log('AXIOS_URL', AXIOS_URL)
+    let updatedOrder = await axios.put(AXIOS_URL, {orderId, amount})
     history.push('/cart/checkout/complete')
   } catch (err) {
     errorPayment(err)
