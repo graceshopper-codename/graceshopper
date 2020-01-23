@@ -29,7 +29,8 @@
 //         .expect(200)
 
 //       expect(res.body).to.be.an('array')
-//       expect(res.body[0].title).to.be.equal('Everdell')
+//       console.log('*******', res.body)
+//     //   expect(res.body[0].title).to.be.equal('Everdell')
 //     })
 //   }) // end describe('/api/users')
 // }) // end describe('User routes')

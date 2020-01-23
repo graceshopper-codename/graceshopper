@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
 
 router.get('/sale', async (req, res, next) => {
   try {
-    const saleProducts = await Products.findSales()
+    const saleProducts = await Products.findAll()
     res.send(saleProducts)
   } catch (err) {
     next(err)
