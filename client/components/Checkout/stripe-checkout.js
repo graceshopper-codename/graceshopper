@@ -6,7 +6,7 @@ import history from '../../history'
 const STRIPE_PUBLISHABLE = 'pk_test_L3Vq2Zgcq1RdL3ss2kPjQfwv000PVzD9jp'
 const PAYMENT_SERVER_URL =
   process.env.NODE_ENV === 'production'
-    ? process.env.PORT
+    ? process.env.PROD_URI
     : 'http://localhost:8080'
 
 const CURRENCY = 'USD'
