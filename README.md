@@ -8,7 +8,7 @@
 - Sarah Rosenstock (https://github.com/srosenstock)
 
 ## Technologies Used
-Front-end: React-Redux
+Front-end: React, Redux
 Back-end: Node.js, Express, Sequelize
 
 ## Getting Started
@@ -21,7 +21,7 @@ Back-end: Node.js, Express, Sequelize
 https://codenames-boardgames.herokuapp.com/
 
 ### Users
-Users have persistent cart and account history which shows the previous orders.
+Users can view their previous orders via account history page. Users' carts are persistent. 
 
 ### Admins
 Admins can update product information, add/remove product, add/remove users.
